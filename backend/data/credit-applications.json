@@ -1,0 +1,26 @@
+[
+  {
+    "id": "mksbuxu47by3cjvtgdj",
+    "price": "15000000",
+    "initialPercentage": "10",
+    "term": "84",
+    "model": "undefined undefined",
+    "name": "Эльбрус Исенгазиев",
+    "phone": "89884294590",
+    "email": "elbrusgg@gmail.com",
+    "createdAt": "2026-01-24T13:10:29.068Z",
+    "status": "pending"
+  },
+  {
+    "id": "mksc12eivxv4t7slri",
+    "price": "5000000",
+    "initialPercentage": "40",
+    "term": "36",
+    "model": "undefined undefined",
+    "name": "Эльбрус Исенгазиев",
+    "phone": "89884294590",
+    "email": "elbrusgg@gmail.com",
+    "createdAt": "2026-01-24T13:15:14.922Z",
+    "status": "pending"
+  }
+]

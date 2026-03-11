@@ -1,0 +1,113 @@
+/**
+ * SVG иконки для сайта BMW Dealer
+ */
+
+/* Базовые стили для иконок */
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.icon svg {
+	width: 100%;
+	height: 100%;
+}
+
+/* Размеры иконок */
+.icon-xs {
+	width: 12px;
+	height: 12px;
+}
+.icon-sm {
+	width: 16px;
+	height: 16px;
+}
+.icon-md {
+	width: 20px;
+	height: 20px;
+}
+.icon-lg {
+	width: 24px;
+	height: 24px;
+}
+.icon-xl {
+	width: 32px;
+	height: 32px;
+}
+.icon-2xl {
+	width: 48px;
+	height: 48px;
+}
+
+/* Цвета иконок */
+.icon-primary {
+	color: var(--bmw-blue-primary);
+}
+.icon-secondary {
+	color: var(--bmw-gray);
+}
+.icon-success {
+	color: var(--bmw-green);
+}
+.icon-danger {
+	color: var(--bmw-red);
+}
+.icon-white {
+	color: var(--bmw-white);
+}
+.icon-dark {
+	color: var(--bmw-black);
+}
+
+/* Иконка с фоном */
+.icon-bg {
+	padding: 0.5rem;
+	border-radius: var(--radius-full);
+}
+
+.icon-bg-primary {
+	background: var(--bmw-gradient-primary);
+	color: var(--bmw-white);
+}
+
+.icon-bg-light {
+	background: var(--bmw-gray-light);
+	color: var(--bmw-gray-dark);
+}
+
+/* Анимация иконок */
+.icon-spin {
+	animation: icon-spin 1s linear infinite;
+}
+
+@keyframes icon-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.icon-pulse {
+	animation: icon-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes icon-pulse {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+}
+
+/* Hover эффект */
+.icon-hover:hover {
+	color: var(--bmw-blue-primary);
+	transform: scale(1.1);
+	transition: all var(--transition-normal);
+}

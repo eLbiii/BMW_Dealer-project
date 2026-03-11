@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Отзывы владельцев BMW. Реальный опыт эксплуатации, плюсы и минусы различных моделей."
+		/>
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Отзывы | BMW Дилер</title>
+		<link rel="stylesheet" href="../src/styles/main.css" />
+	</head>
+	<body id="page-reviews">
+		<!-- Шапка -->
+		<header class="header" id="header">
+			<div class="header-inner">
+				<div class="header-logo">
+					<a href="../index.html">
+						<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+							<!-- Внешнее кольцо -->
+							<circle
+								cx="50"
+								cy="50"
+								r="48"
+								fill="none"
+								stroke="#fff"
+								stroke-width="2"
+							/>
+							<!-- Синие и белые секторы -->
+							<path d="M50 8 A42 42 0 0 1 92 50 L50 50 Z" fill="#1c69d4" />
+							<path d="M50 92 A42 42 0 0 1 8 50 L50 50 Z" fill="#1c69d4" />
+							<path d="M92 50 A42 42 0 0 1 50 92 L50 50 Z" fill="#fff" />
+							<path d="M8 50 A42 42 0 0 1 50 8 L50 50 Z" fill="#fff" />
+						</svg>
+						<span class="header-logo-text">BMW</span>
+					</a>
+				</div>
+				<nav class="header-nav">
+					<ul class="header-nav-list">
+						<li class="nav-item">
+							<a href="catalog.html" class="nav-link">Автомобили</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link"
+								>Владельцам<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<polyline points="6 9 12 15 18 9"></polyline></svg
+							></a>
+							<div class="nav-dropdown">
+								<a href="service.html" class="nav-dropdown-item"
+									>Запись на сервис</a
+								>
+								<a href="warranty.html" class="nav-dropdown-item"
+									>Условия гарантии</a
+								>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link"
+								>Больше о BMW<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<polyline points="6 9 12 15 18 9"></polyline></svg
+							></a>
+							<div class="nav-dropdown">
+								<a href="credit.html" class="nav-dropdown-item"
+									>Покупка в кредит</a
+								>
+								<a href="leasing.html" class="nav-dropdown-item">Лизинг</a>
+								<a href="insurance.html" class="nav-dropdown-item"
+									>Страхование</a
+								>
+								<a href="history.html" class="nav-dropdown-item">История BMW</a>
+								<a href="reviews.html" class="nav-dropdown-item">Отзывы</a>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a href="testdrive.html" class="nav-link">Тест-драйв</a>
+						</li>
+						<li class="nav-item">
+							<a href="faq.html" class="nav-link">FAQ</a>
+						</li>
+						<li class="nav-item">
+							<a href="feedback.html" class="nav-link">Контакты</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="header-actions">
+					<a
+						href="dealers.html"
+						class="header-action-btn"
+						title="Карта дилеров"
+					>
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+					</a>
+					<a href="login.html" class="header-action-btn" title="Личный кабинет">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+							<circle cx="12" cy="7" r="4"></circle>
+						</svg>
+					</a>
+					<button class="burger-btn" id="burgerBtn">
+						<span></span><span></span><span></span>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<!-- Мобильное меню -->
+		<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+		<div class="mobile-menu" id="mobileMenu">
+			<div class="mobile-menu-header">
+				<div class="mobile-menu-logo" style="width: 50px; height: 50px">
+					<!-- 3D Logo injected here -->
+				</div>
+				<div style="display: flex; gap: 1rem; align-items: center">
+					<a href="dealers.html" class="header-action-btn" title="Найти дилера">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+					</a>
+					<button class="mobile-menu-close" id="mobileMenuClose">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<line x1="18" y1="6" x2="6" y2="18"></line>
+							<line x1="6" y1="6" x2="18" y2="18"></line>
+						</svg>
+					</button>
+				</div>
+			</div>
+			<nav class="mobile-menu-nav">
+				<ul class="mobile-nav-list">
+					<li class="mobile-nav-item">
+						<a href="catalog.html" class="mobile-nav-link">Автомобили</a>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="#" class="mobile-nav-link"
+							>Владельцам
+							<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<polyline points="6 9 12 15 18 9"></polyline></svg
+						></a>
+						<div class="mobile-nav-submenu">
+							<a href="service.html" class="mobile-nav-sublink"
+								>Запись на сервис</a
+							><a href="warranty.html" class="mobile-nav-sublink"
+								>Условия гарантии</a
+							>
+						</div>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="testdrive.html" class="mobile-nav-link">Тест-драйв</a>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="faq.html" class="mobile-nav-link">FAQ</a>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="feedback.html" class="mobile-nav-link">Контакты</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="header-spacer"></div>
+
+		<!-- Заголовок страницы -->
+		<section class="page-header">
+			<div class="container">
+				<h1 class="page-title">Отзывы</h1>
+				<p class="page-subtitle">Впечатления владельцев BMW</p>
+			</div>
+		</section>
+
+		<main class="main-content">
+			<section class="content-section">
+				<div class="container">
+					<!-- Фильтры -->
+					<div class="filters" id="reviewsFilters">
+						<div class="filter-group">
+							<label class="filter-label">Сортировать по:</label>
+							<select class="form-control" id="sortDate">
+								<option value="newest">Сначала новые</option>
+								<option value="oldest">Сначала старые</option>
+								<option value="rating_desc">Высокий рейтинг</option>
+								<option value="rating_asc">Низкий рейтинг</option>
+							</select>
+						</div>
+						<div class="filter-group" style="align-self: flex-end">
+							<button
+								class="btn btn-primary"
+								onclick="BMWDealer.openModal('reviewModal')"
+							>
+								Оставить отзыв
+							</button>
+						</div>
+					</div>
+
+					<!-- Сетка отзывов -->
+					<div class="cards-grid cards-grid-3" id="reviewsGrid">
+						<!-- Отзывы загружаются через JS -->
+						<div style="grid-column: 1 / -1; text-align: center; padding: 3rem">
+							<span class="loader"></span> Загрузка отзывов...
+						</div>
+					</div>
+
+					<!-- Пагинация -->
+					<nav class="pagination" id="pagination">
+						<!-- Пагинация загружается через JS -->
+					</nav>
+				</div>
+			</section>
+		</main>
+
+		<!-- Модальное окно отзыва -->
+		<div class="modal-overlay" id="reviewModal">
+			<div class="modal-container">
+				<div class="modal-header">
+					<h3 class="modal-title">Оставить отзыв</h3>
+					<button class="modal-close">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form class="form" id="reviewForm">
+						<div class="form-group">
+							<label class="form-label">Ваше имя</label>
+							<input
+								type="text"
+								class="form-control"
+								required
+								placeholder="Имя"
+							/>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Ваш автомобиль</label>
+							<input
+								type="text"
+								class="form-control"
+								required
+								placeholder="Например, BMW X5"
+							/>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Оценка</label>
+							<div class="rating-input">
+								<select class="form-control" required>
+									<option value="5">5 - Отлично</option>
+									<option value="4">4 - Хорошо</option>
+									<option value="3">3 - Нормально</option>
+									<option value="2">2 - Плохо</option>
+									<option value="1">1 - Ужасно</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Отзыв</label>
+							<textarea
+								class="form-control"
+								rows="4"
+								required
+								placeholder="Поделитесь своими впечатлениями"
+							></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary btn-block">
+							Отправить
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Футер -->
+		<footer class="footer">
+			<div class="footer-inner">
+				<div class="footer-top">
+					<div class="footer-column">
+						<h4 class="footer-column-title">BMW Россия</h4>
+						<ul class="footer-links">
+							<li><a href="history.html" class="footer-link">О компании</a></li>
+							<li>
+								<a href="dealers.html" class="footer-link">Дилерские центры</a>
+							</li>
+							<li><a href="feedback.html" class="footer-link">Контакты</a></li>
+						</ul>
+					</div>
+					<div class="footer-column">
+						<h4 class="footer-column-title">Автомобили</h4>
+						<ul class="footer-links">
+							<li><a href="catalog.html" class="footer-link">Все модели</a></li>
+							<li>
+								<a href="catalog.html?condition=new" class="footer-link"
+									>Новые</a
+								>
+							</li>
+							<li>
+								<a href="catalog.html?condition=used" class="footer-link"
+									>С пробегом</a
+								>
+							</li>
+						</ul>
+					</div>
+					<div class="footer-column">
+						<h4 class="footer-column-title">Услуги</h4>
+						<ul class="footer-links">
+							<li><a href="service.html" class="footer-link">Сервис</a></li>
+							<li>
+								<a href="testdrive.html" class="footer-link">Тест-драйв</a>
+							</li>
+							<li><a href="leasing.html" class="footer-link">Лизинг</a></li>
+						</ul>
+					</div>
+					<div class="footer-column">
+						<h4 class="footer-column-title">Контакты</h4>
+						<div class="footer-contact">
+							<div class="footer-contact-item">
+								<span class="footer-phone">8 800 500-55-55</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<p class="footer-copyright">© 2026 BMW Россия. Все права защищены.</p>
+				</div>
+			</div>
+		</footer>
+
+		<div class="toast-container" id="toastContainer"></div>
+
+		<script src="../src/js/main.js"></script>
+		<script src="../src/js/navigation.js"></script>
+		<script src="../src/js/reviews.js"></script>
+		<!-- Three.js (3D Graphics) -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+		<!-- GSAP & Lenis -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+		<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+		<!-- Custom Animations -->
+		<script src="../src/js/animations.js"></script>
+		<script src="../src/js/page-header-3d.js"></script>
+		<script src="../src/js/3d-logo.js"></script>
+	</body>
+</html>

@@ -1,0 +1,257 @@
+/**
+ * Стили навигации для сайта BMW Dealer
+ */
+
+/* Главная навигация */
+.main-nav {
+	display: flex;
+	align-items: center;
+}
+
+/* Навигационная ссылка с иконкой */
+.nav-icon-link {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--bmw-white);
+	padding: 0.5rem;
+	border-radius: var(--radius-md);
+	transition: all var(--transition-normal);
+}
+
+.nav-icon-link:hover {
+	color: var(--bmw-blue-light);
+}
+
+.nav-icon-link svg {
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+/* Хлебные крошки */
+.breadcrumb {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	padding: 1rem 0;
+	font-size: var(--font-size-sm);
+}
+
+.breadcrumb-item {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--bmw-gray);
+}
+
+.breadcrumb-item a {
+	color: var(--bmw-gray);
+	transition: color var(--transition-normal);
+}
+
+.breadcrumb-item a:hover {
+	color: var(--bmw-blue-primary);
+}
+
+.breadcrumb-item.active {
+	color: var(--bmw-gray-dark);
+	font-weight: var(--font-weight-medium);
+}
+
+.breadcrumb-separator {
+	color: var(--bmw-gray);
+}
+
+/* Боковая навигация */
+.side-nav {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	padding: 1rem;
+	background: #1a1a1a;
+	border: 1px solid #333;
+	border-radius: var(--radius-lg);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.side-nav-item {
+	padding: 0.75rem 1rem;
+	color: #cccccc;
+	font-size: var(--font-size-base);
+	border-radius: var(--radius-md);
+	transition: all var(--transition-normal);
+}
+
+.side-nav-item:hover {
+	background: rgba(255, 255, 255, 0.1);
+	color: #ffffff;
+}
+
+.side-nav-item.active {
+	background: var(--bmw-blue-primary);
+	color: var(--bmw-white);
+}
+
+/* Табы навигации */
+.nav-tabs {
+	display: flex;
+	border-bottom: 2px solid #333;
+	gap: 0;
+}
+
+.nav-tab {
+	padding: 1rem 1.5rem;
+	color: #888;
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-medium);
+	border: none;
+	background: transparent;
+	border-bottom: 2px solid transparent;
+	margin-bottom: -2px;
+	cursor: pointer;
+	transition: all var(--transition-normal);
+}
+
+.nav-tab:hover {
+	color: #fff;
+}
+
+.nav-tab.active {
+	color: var(--bmw-blue-primary);
+	border-bottom-color: var(--bmw-blue-primary);
+}
+
+/* Пагинация */
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 2rem 0;
+}
+
+.pagination-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 40px;
+	height: 40px;
+	padding: 0 0.75rem;
+	color: #cccccc;
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-medium);
+	background: #1a1a1a;
+	border: 1px solid #333;
+	border-radius: var(--radius-md);
+	cursor: pointer;
+	transition: all var(--transition-normal);
+}
+
+.pagination-item:hover {
+	border-color: var(--bmw-blue-primary);
+	color: var(--bmw-blue-primary);
+	background: #222;
+}
+
+.pagination-item.active {
+	background: var(--bmw-blue-primary);
+	border-color: var(--bmw-blue-primary);
+	color: var(--bmw-white);
+}
+
+.pagination-item:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	background: #111;
+}
+
+.pagination-item svg {
+	width: 1rem;
+	height: 1rem;
+}
+
+/* Фильтры */
+.filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	padding: 1.5rem;
+	background: #1a1a1a;
+	border: 1px solid #333;
+	border-radius: var(--radius-lg);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+	margin-bottom: 2rem;
+}
+
+.filter-group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	min-width: 200px;
+	flex: 1;
+}
+
+.filter-label {
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	color: #cccccc;
+}
+
+.filter-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.filter-chip {
+	padding: 0.5rem 1rem;
+	font-size: var(--font-size-sm);
+	color: #cccccc;
+	background: rgba(255, 255, 255, 0.05); /* Slightly lighter background */
+	border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+	border-radius: var(--radius-full);
+	cursor: pointer;
+	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+	position: relative;
+	overflow: hidden;
+}
+
+.filter-chip:hover {
+	background: rgba(255, 255, 255, 0.1);
+	color: #ffffff;
+	border-color: rgba(255, 255, 255, 0.2);
+	transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.filter-chip.active {
+	background: var(--bmw-blue-primary);
+	color: var(--bmw-white);
+	border-color: var(--bmw-blue-primary);
+	box-shadow:
+		0 0 15px rgba(28, 105, 212, 0.6),
+		inset 0 0 10px rgba(255, 255, 255, 0.2);
+	transform: translateY(0); /* Reset lift on active to anchor it */
+}
+
+/* Add a subtle shine effect on hover for non-active chips */
+.filter-chip::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 50%;
+	height: 100%;
+	background: linear-gradient(
+		to right,
+		transparent,
+		rgba(255, 255, 255, 0.1),
+		transparent
+	);
+	transform: skewX(-20deg);
+	transition: left 0.5s ease;
+}
+
+.filter-chip:not(.active):hover::before {
+	left: 150%;
+}

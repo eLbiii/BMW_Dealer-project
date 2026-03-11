@@ -1,0 +1,195 @@
+/**
+ * Стили бургер-меню для сайта BMW Dealer
+ * Появляется при разрешении ниже 1600px
+ */
+
+/* Оверлей */
+.mobile-menu-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(4px);
+	z-index: 1500;
+	opacity: 0;
+	visibility: hidden;
+}
+
+/* Мобильное меню (выезжает справа) */
+.mobile-menu {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 320px;
+	max-width: 90vw;
+	background: var(--bmw-gradient-dark);
+	z-index: 1600;
+	transform: translateX(100%);
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Шапка мобильного меню */
+.mobile-menu-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1.5rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-logo svg {
+	width: 45px;
+	height: 45px;
+}
+
+.mobile-menu-close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	background: rgba(255, 255, 255, 0.1);
+	border: none;
+	border-radius: var(--radius-full);
+	color: var(--bmw-white);
+	cursor: pointer;
+	transition: all var(--transition-normal);
+}
+
+.mobile-menu-close:hover {
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-menu-close svg {
+	width: 24px;
+	height: 24px;
+}
+
+/* Навигация мобильного меню */
+.mobile-menu-nav {
+	flex: 1;
+	padding: 1rem 0;
+}
+
+.mobile-nav-list {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Элемент мобильной навигации */
+.mobile-nav-item {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-nav-link {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem 1.5rem;
+	color: var(--bmw-white);
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-medium);
+	transition: all var(--transition-normal);
+}
+
+.mobile-nav-link:hover {
+	background: rgba(255, 255, 255, 0.05);
+	color: var(--bmw-blue-light);
+}
+
+.mobile-nav-link svg {
+	width: 1.25rem;
+	height: 1.25rem;
+	transition: transform var(--transition-normal);
+}
+
+/* Подменю */
+.mobile-nav-submenu {
+	display: none;
+	flex-direction: column;
+	background: rgba(0, 0, 0, 0.2);
+	padding: 0.5rem 0;
+}
+
+.mobile-nav-item.open .mobile-nav-submenu {
+	display: flex;
+}
+
+.mobile-nav-item.open .mobile-nav-link svg {
+	transform: rotate(180deg);
+}
+
+.mobile-nav-sublink {
+	display: block;
+	padding: 0.75rem 2.5rem;
+	color: rgba(255, 255, 255, 0.7);
+	font-size: var(--font-size-sm);
+	transition: all var(--transition-normal);
+}
+
+.mobile-nav-sublink:hover {
+	color: var(--bmw-white);
+	background: rgba(255, 255, 255, 0.05);
+	padding-left: 3rem;
+}
+
+/* Нижняя часть мобильного меню */
+.mobile-menu-footer {
+	padding: 1.5rem;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-actions {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.mobile-menu-action {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem;
+	color: var(--bmw-white);
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: var(--radius-md);
+	transition: all var(--transition-normal);
+}
+
+.mobile-menu-action:hover {
+	background: var(--bmw-blue-primary);
+}
+
+.mobile-menu-action svg {
+	width: 24px;
+	height: 24px;
+}
+
+.mobile-menu-action-text {
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-medium);
+}
+
+/* Предотвращение прокрутки body */
+body.menu-open {
+	overflow: hidden;
+}
+
+/* Показывать только на мобильных */
+@media (min-width: 1601px) {
+	.mobile-menu-overlay,
+	.mobile-menu {
+		display: none !important;
+	}
+}
+
+/* Размер кнопки дилеров в шапке мобильного меню (как кнопка закрытия) */
+.mobile-menu-header .header-action-btn {
+	width: 40px;
+	height: 40px;
+}

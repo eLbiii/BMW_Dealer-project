@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet" />
+		<title>Image Path Debugger</title>
+		<style>
+			body {
+				font-family: sans-serif;
+				padding: 20px;
+			}
+			.test-case {
+				margin: 20px 0;
+				border: 1px solid #ccc;
+				padding: 10px;
+			}
+			img {
+				max-width: 200px;
+				display: block;
+				margin-top: 10px;
+				background: #eee;
+			}
+			.status {
+				font-weight: bold;
+			}
+			.success {
+				color: green;
+			}
+			.error {
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Debugging Image Paths</h1>
+		<p>Please tell me which of these images load successfully.</p>
+
+		<!-- Test 1: Relative Path (Current) -->
+		<div class="test-case">
+			<h3>1. Relative Path: <code>../src/assets/images/cars/...</code></h3>
+			<img
+				src="../src/assets/images/cars/bmw-i4-m60-xdrive-flyout.avif"
+				onload="this.previousElementSibling.innerText += ' - OK'"
+				onerror="this.previousElementSibling.innerText += ' - FAILED'"
+			/>
+		</div>
+
+		<!-- Test 2: Absolute Path (Root) -->
+		<div class="test-case">
+			<h3>2. Absolute Path: <code>/src/assets/images/cars/...</code></h3>
+			<img
+				src="/src/assets/images/cars/bmw-i4-m60-xdrive-flyout.avif"
+				onload="this.previousElementSibling.innerText += ' - OK'"
+				onerror="this.previousElementSibling.innerText += ' - FAILED'"
+			/>
+		</div>
+
+		<!-- Test 3: No Src Path -->
+		<div class="test-case">
+			<h3>3. Path without 'src': <code>../assets/images/cars/...</code></h3>
+			<img
+				src="../assets/images/cars/bmw-i4-m60-xdrive-flyout.avif"
+				onload="this.previousElementSibling.innerText += ' - OK'"
+				onerror="this.previousElementSibling.innerText += ' - FAILED'"
+			/>
+		</div>
+
+		<!-- Test 4: Root Path without 'src' -->
+		<div class="test-case">
+			<h3>4. Root Path without 'src': <code>/assets/images/cars/...</code></h3>
+			<img
+				src="/assets/images/cars/bmw-i4-m60-xdrive-flyout.avif"
+				onload="this.previousElementSibling.innerText += ' - OK'"
+				onerror="this.previousElementSibling.innerText += ' - FAILED'"
+			/>
+		</div>
+
+		<!-- Test 5: Different Format (WEBP) -->
+		<div class="test-case">
+			<h3>
+				5. Different File (WEBP):
+				<code>../src/assets/images/cars/02-bmw-i5-m60-flyout.webp</code>
+			</h3>
+			<img
+				src="../src/assets/images/cars/02-bmw-i5-m60-flyout.webp"
+				onload="this.previousElementSibling.innerText += ' - OK'"
+				onerror="this.previousElementSibling.innerText += ' - FAILED'"
+			/>
+		</div>
+
+		<!-- Test 6: Different File (JPG) -->
+		<div class="test-case">
+			<h3>
+				6. Different File (JPG):
+				<code>../src/assets/images/cars/bmw-i4-m60-xdrive-full.jpg</code>
+			</h3>
+			<img
+				src="../src/assets/images/cars/bmw-i4-m60-xdrive-full.jpg"
+				onload="this.previousElementSibling.innerText += ' - OK'"
+				onerror="this.previousElementSibling.innerText += ' - FAILED'"
+			/>
+		</div>
+		<!-- Three.js (3D Graphics) -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+		<!-- GSAP & Lenis -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+		<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+		<!-- Custom Animations -->
+		<script src="../src/js/animations.js"></script>
+		<script src="../src/js/3d-logo.js"></script>
+	</body>
+</html>

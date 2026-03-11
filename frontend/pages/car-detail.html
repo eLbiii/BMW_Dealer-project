@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Детали автомобиля | BMW Дилер</title>
+		<link rel="stylesheet" href="../src/styles/main.css" />
+	</head>
+	<body>
+		<!-- Шапка -->
+		<header class="header" id="header">
+			<div class="header-inner">
+				<div class="header-logo">
+					<a href="../index.html">
+						<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+							<!-- Внешнее кольцо -->
+							<circle
+								cx="50"
+								cy="50"
+								r="48"
+								fill="none"
+								stroke="#fff"
+								stroke-width="2"
+							/>
+							<!-- Синие и белые секторы -->
+							<path d="M50 8 A42 42 0 0 1 92 50 L50 50 Z" fill="#1c69d4" />
+							<path d="M50 92 A42 42 0 0 1 8 50 L50 50 Z" fill="#1c69d4" />
+							<path d="M92 50 A42 42 0 0 1 50 92 L50 50 Z" fill="#fff" />
+							<path d="M8 50 A42 42 0 0 1 50 8 L50 50 Z" fill="#fff" />
+						</svg>
+						<span class="header-logo-text">BMW</span>
+					</a>
+				</div>
+				<nav class="header-nav">
+					<ul class="header-nav-list">
+						<li class="nav-item">
+							<a href="catalog.html" class="nav-link">Автомобили</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link"
+								>Владельцам<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<polyline points="6 9 12 15 18 9"></polyline></svg
+							></a>
+							<div class="nav-dropdown">
+								<a href="service.html" class="nav-dropdown-item"
+									>Запись на сервис</a
+								>
+								<a href="warranty.html" class="nav-dropdown-item"
+									>Условия гарантии</a
+								>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link"
+								>Больше о BMW<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<polyline points="6 9 12 15 18 9"></polyline></svg
+							></a>
+							<div class="nav-dropdown">
+								<a href="credit.html" class="nav-dropdown-item"
+									>Покупка в кредит</a
+								>
+								<a href="leasing.html" class="nav-dropdown-item">Лизинг</a>
+								<a href="insurance.html" class="nav-dropdown-item"
+									>Страхование</a
+								>
+								<a href="history.html" class="nav-dropdown-item">История BMW</a>
+								<a href="reviews.html" class="nav-dropdown-item">Отзывы</a>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a href="testdrive.html" class="nav-link">Тест-драйв</a>
+						</li>
+						<li class="nav-item">
+							<a href="faq.html" class="nav-link">FAQ</a>
+						</li>
+						<li class="nav-item">
+							<a href="feedback.html" class="nav-link">Контакты</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="header-actions">
+					<a
+						href="dealers.html"
+						class="header-action-btn"
+						title="Карта дилеров"
+					>
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+					</a>
+					<a href="login.html" class="header-action-btn" title="Личный кабинет">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+							<circle cx="12" cy="7" r="4"></circle>
+						</svg>
+					</a>
+					<button class="burger-btn" id="burgerBtn">
+						<span></span><span></span><span></span>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<!-- Мобильное меню -->
+		<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+		<div class="mobile-menu" id="mobileMenu">
+			<div class="mobile-menu-header">
+				<div class="mobile-menu-logo" style="width: 50px; height: 50px">
+					<!-- 3D Logo injected here -->
+				</div>
+				<div style="display: flex; gap: 1rem; align-items: center">
+					<a href="dealers.html" class="header-action-btn" title="Найти дилера">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+					</a>
+					<button class="mobile-menu-close" id="mobileMenuClose">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<line x1="18" y1="6" x2="6" y2="18"></line>
+							<line x1="6" y1="6" x2="18" y2="18"></line>
+						</svg>
+					</button>
+				</div>
+			</div>
+			<nav class="mobile-menu-nav">
+				<ul class="mobile-nav-list">
+					<li class="mobile-nav-item">
+						<a href="catalog.html" class="mobile-nav-link">Автомобили</a>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="#" class="mobile-nav-link"
+							>Владельцам<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<polyline points="6 9 12 15 18 9"></polyline></svg
+						></a>
+						<div class="mobile-nav-submenu">
+							<a href="service.html" class="mobile-nav-sublink"
+								>Запись на сервис</a
+							><a href="warranty.html" class="mobile-nav-sublink"
+								>Условия гарантии</a
+							>
+						</div>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="testdrive.html" class="mobile-nav-link">Тест-драйв</a>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="faq.html" class="mobile-nav-link">FAQ</a>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="feedback.html" class="mobile-nav-link">Контакты</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="header-spacer"></div>
+
+		<main class="main-content">
+			<div
+				id="carDetailContainer"
+				class="container"
+				style="padding-top: 2rem; min-height: 600px"
+			>
+				<div
+					class="loader-overlay"
+					style="position: absolute; background: transparent"
+				>
+					<div class="loader"></div>
+				</div>
+			</div>
+		</main>
+
+		<footer class="footer">
+			<div class="footer-inner">
+				<div class="footer-bottom">
+					<p class="footer-copyright">© 2026 BMW Россия. Все права защищены.</p>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Template for content -->
+		<template id="carDetailTemplate">
+			<section class="car-detail-hero">
+				<div class="car-detail-gallery">
+					<div class="car-detail-image">
+						<img id="detailImage" src="" alt="" />
+					</div>
+				</div>
+				<div class="car-detail-info">
+					<h1 id="detailName" class="car-detail-title"></h1>
+					<p id="detailSubtitle" class="car-detail-subtitle"></p>
+					<div id="detailPrice" class="car-detail-price"></div>
+
+					<div class="car-specs-grid">
+						<div class="car-spec-item">
+							<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<circle cx="12" cy="12" r="10"></circle>
+								<polyline points="12 6 12 12 16 14"></polyline>
+							</svg>
+							<div>
+								<div class="car-spec-label">Разгон 0-100</div>
+								<div id="specAcceleration" class="car-spec-value"></div>
+							</div>
+						</div>
+						<div class="car-spec-item">
+							<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+							</svg>
+							<div>
+								<div class="car-spec-label">Мощность</div>
+								<div id="specPower" class="car-spec-value"></div>
+							</div>
+						</div>
+						<div class="car-spec-item">
+							<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<circle cx="12" cy="12" r="3"></circle>
+								<path
+									d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+								></path>
+							</svg>
+							<div>
+								<div class="car-spec-label">Двигатель/Тип</div>
+								<div id="specEngine" class="car-spec-value"></div>
+							</div>
+						</div>
+						<div class="car-spec-item">
+							<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<rect x="1" y="3" width="15" height="13"></rect>
+								<polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+								<circle cx="5.5" cy="18.5" r="2.5"></circle>
+								<circle cx="18.5" cy="18.5" r="2.5"></circle>
+							</svg>
+							<div>
+								<div class="car-spec-label">Привод</div>
+								<div id="specDrive" class="car-spec-value"></div>
+							</div>
+						</div>
+					</div>
+
+					<p
+						id="detailDescription"
+						class="timeline-text"
+						style="margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.6"
+					></p>
+
+					<div
+						id="detailModelInfo"
+						class="detail-text-block"
+						style="margin-bottom: 2rem; font-style: italic; color: #555"
+					></div>
+
+					<div class="detail-section" style="margin-bottom: 2.5rem">
+						<h3
+							class="detail-section-title"
+							style="
+								font-size: 1.4rem;
+								font-weight: 700;
+								margin-bottom: 1rem;
+								text-transform: uppercase;
+							"
+						>
+							Факты о модели
+						</h3>
+						<ul
+							id="detailFacts"
+							class="detail-facts-list"
+							style="list-style: none; padding: 0; display: grid; gap: 0.5rem"
+						></ul>
+					</div>
+
+					<div class="detail-section" style="margin-bottom: 2.5rem">
+						<h3
+							class="detail-section-title"
+							style="
+								font-size: 1.4rem;
+								font-weight: 700;
+								margin-bottom: 1rem;
+								text-transform: uppercase;
+							"
+						>
+							Двигатель
+						</h3>
+						<p id="detailEngineInfo" style="line-height: 1.6; color: #333"></p>
+					</div>
+
+					<div class="detail-section" style="margin-bottom: 2.5rem">
+						<h3
+							class="detail-section-title"
+							style="
+								font-size: 1.4rem;
+								font-weight: 700;
+								margin-bottom: 1rem;
+								text-transform: uppercase;
+							"
+						>
+							Технические характеристики
+						</h3>
+						<table
+							class="specs-table"
+							style="width: 100%; border-collapse: collapse"
+						>
+							<tbody id="detailTechSpecs"></tbody>
+						</table>
+					</div>
+
+					<div class="car-detail-actions">
+						<a href="testdrive.html" class="btn btn-primary btn-lg"
+							>Тест-драйв</a
+						>
+						<a href="credit.html" class="btn btn-outline-dark btn-lg"
+							>Рассчитать кредит</a
+						>
+					</div>
+				</div>
+			</section>
+		</template>
+
+		<script src="../src/js/main.js"></script>
+		<script src="../src/js/navigation.js"></script>
+		<script src="../src/js/car-detail.js"></script>
+		<!-- Three.js (3D Graphics) -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+		<!-- GSAP & Lenis -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+		<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+		<!-- Custom Animations -->
+		<script src="../src/js/animations.js"></script>
+		<script src="../src/js/page-header-3d.js"></script>
+		<script src="../src/js/3d-logo.js"></script>
+	</body>
+</html>

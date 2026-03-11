@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Официальный сервис BMW. Техническое обслуживание, ремонт, оригинальные запчасти и аксессуары."
+		/>
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Сервис и обслуживание | BMW Дилер</title>
+		<link rel="stylesheet" href="../src/styles/main.css" />
+	</head>
+	<body>
+		<!-- Шапка -->
+		<header class="header" id="header">
+			<div class="header-inner">
+				<div class="header-logo">
+					<a href="../index.html">
+						<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+							<!-- Внешнее кольцо -->
+							<circle
+								cx="50"
+								cy="50"
+								r="48"
+								fill="none"
+								stroke="#fff"
+								stroke-width="2"
+							/>
+							<!-- Синие и белые секторы -->
+							<path d="M50 8 A42 42 0 0 1 92 50 L50 50 Z" fill="#1c69d4" />
+							<path d="M50 92 A42 42 0 0 1 8 50 L50 50 Z" fill="#1c69d4" />
+							<path d="M92 50 A42 42 0 0 1 50 92 L50 50 Z" fill="#fff" />
+							<path d="M8 50 A42 42 0 0 1 50 8 L50 50 Z" fill="#fff" />
+						</svg>
+						<span class="header-logo-text">BMW</span>
+					</a>
+				</div>
+				<nav class="header-nav">
+					<ul class="header-nav-list">
+						<li class="nav-item">
+							<a href="catalog.html" class="nav-link">Автомобили</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link"
+								>Владельцам<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<polyline points="6 9 12 15 18 9"></polyline></svg
+							></a>
+							<div class="nav-dropdown">
+								<a href="service.html" class="nav-dropdown-item"
+									>Запись на сервис</a
+								>
+								<a href="warranty.html" class="nav-dropdown-item"
+									>Условия гарантии</a
+								>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link"
+								>Больше о BMW<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<polyline points="6 9 12 15 18 9"></polyline></svg
+							></a>
+							<div class="nav-dropdown">
+								<a href="credit.html" class="nav-dropdown-item"
+									>Покупка в кредит</a
+								>
+								<a href="leasing.html" class="nav-dropdown-item">Лизинг</a>
+								<a href="insurance.html" class="nav-dropdown-item"
+									>Страхование</a
+								>
+								<a href="history.html" class="nav-dropdown-item">История BMW</a>
+								<a href="reviews.html" class="nav-dropdown-item">Отзывы</a>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a href="testdrive.html" class="nav-link">Тест-драйв</a>
+						</li>
+						<li class="nav-item">
+							<a href="faq.html" class="nav-link">FAQ</a>
+						</li>
+						<li class="nav-item">
+							<a href="feedback.html" class="nav-link">Контакты</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="header-actions">
+					<a
+						href="dealers.html"
+						class="header-action-btn"
+						title="Карта дилеров"
+					>
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+					</a>
+					<a href="login.html" class="header-action-btn" title="Личный кабинет">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+							<circle cx="12" cy="7" r="4"></circle>
+						</svg>
+					</a>
+					<button class="burger-btn" id="burgerBtn">
+						<span></span><span></span><span></span>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<!-- Мобильное меню (копия из других страниц) -->
+		<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+		<div class="mobile-menu" id="mobileMenu">
+			<div class="mobile-menu-header">
+				<div class="mobile-menu-logo" style="width: 50px; height: 50px">
+					<!-- 3D Logo injected here -->
+				</div>
+				<div style="display: flex; gap: 1rem; align-items: center">
+					<a href="dealers.html" class="header-action-btn" title="Найти дилера">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+					</a>
+					<button class="mobile-menu-close" id="mobileMenuClose">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<line x1="18" y1="6" x2="6" y2="18"></line>
+							<line x1="6" y1="6" x2="18" y2="18"></line>
+						</svg>
+					</button>
+				</div>
+			</div>
+			<nav class="mobile-menu-nav">
+				<ul class="mobile-nav-list">
+					<li class="mobile-nav-item">
+						<a href="catalog.html" class="mobile-nav-link">Автомобили</a>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="#" class="mobile-nav-link"
+							>Владельцам<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<polyline points="6 9 12 15 18 9"></polyline></svg
+						></a>
+						<div class="mobile-nav-submenu">
+							<a href="service.html" class="mobile-nav-sublink"
+								>Запись на сервис</a
+							><a href="warranty.html" class="mobile-nav-sublink"
+								>Условия гарантии</a
+							>
+						</div>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="testdrive.html" class="mobile-nav-link">Тест-драйв</a>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="faq.html" class="mobile-nav-link">FAQ</a>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="feedback.html" class="mobile-nav-link">Контакты</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="header-spacer"></div>
+
+		<!-- Заголовок страницы -->
+		<section class="page-header">
+			<div class="container">
+				<h1 class="page-title">Сервисное обслуживание</h1>
+				<p class="page-subtitle">
+					Профессиональный уход за вашим BMW от официального дилера
+				</p>
+			</div>
+		</section>
+
+		<main class="main-content">
+			<!-- Виды услуг -->
+			<section class="content-section">
+				<div class="container">
+					<div class="section-header">
+						<h2 class="section-title">Наши услуги</h2>
+						<p class="section-subtitle">
+							Полный спектр работ по обслуживанию и ремонту вашего автомобиля
+						</p>
+					</div>
+
+					<div class="cards-grid cards-grid-3">
+						<div class="info-card">
+							<div class="info-card-icon">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<path d="M14.7 6.3L16.3 7.9 20.07 4.13 13.16-2.78">
+										<!-- Placeholder wrench path logic simplified -->
+									</path>
+									<circle cx="12" cy="12" r="3"></circle>
+									<path
+										d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+									></path>
+								</svg>
+							</div>
+							<h3 class="info-card-title">Техническое обслуживание</h3>
+							<p class="info-card-text">
+								Регламентное ТО, замена масла, фильтров и диагностика всех
+								систем.
+							</p>
+						</div>
+
+						<div class="info-card">
+							<div class="info-card-icon">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<path
+										d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+									></path>
+									<polyline points="15 3 21 3 21 9"></polyline>
+									<line x1="10" y1="14" x2="21" y2="3"></line>
+								</svg>
+							</div>
+							<h3 class="info-card-title">Кузовной ремонт</h3>
+							<p class="info-card-text">
+								Восстановление геометрии кузова, покраска и удаление вмятин.
+							</p>
+						</div>
+
+						<div class="info-card">
+							<div class="info-card-icon">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<circle cx="12" cy="12" r="10"></circle>
+									<circle cx="12" cy="12" r="2"></circle>
+								</svg>
+							</div>
+							<h3 class="info-card-title">Оригинальные запчасти</h3>
+							<p class="info-card-text">
+								Использование только сертифицированных деталей с гарантией 2
+								года.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Форма записи -->
+			<section class="content-section">
+				<div class="container">
+					<div class="form-section">
+						<h2 class="form-section-title">Запись на сервис</h2>
+						<form class="form" action="/api/service" method="POST" data-ajax>
+							<div class="form-row">
+								<div class="form-group">
+									<label class="form-label" for="name">Ваше имя</label>
+									<input
+										type="text"
+										class="form-control"
+										id="name"
+										name="name"
+										required
+										placeholder="Иван Иванов"
+									/>
+								</div>
+								<div class="form-group">
+									<label class="form-label" for="phone">Телефон</label>
+									<input
+										type="tel"
+										class="form-control"
+										id="phone"
+										name="phone"
+										required
+										placeholder="+7 (999) 000-00-00"
+									/>
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="form-group">
+									<label class="form-label" for="vin">VIN (17 знаков)</label>
+									<input
+										type="text"
+										class="form-control"
+										id="vin"
+										name="vin"
+										placeholder="XXXXXXXXXXXXXXXXX"
+										minlength="17"
+										maxlength="17"
+										required
+									/>
+								</div>
+								<div class="form-group">
+									<label class="form-label" for="serviceType">Тип услуги</label>
+									<select
+										class="form-control"
+										id="serviceType"
+										name="serviceType"
+									>
+										<option value="maintenance">
+											Техническое обслуживание
+										</option>
+										<option value="diagnostics">Диагностика</option>
+										<option value="repair">Ремонт</option>
+										<option value="other">Другое</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="form-label" for="comment">Комментарий</label>
+								<textarea
+									class="form-control"
+									id="comment"
+									name="comment"
+									rows="3"
+									placeholder="Опишите проблему или пожелания"
+								></textarea>
+							</div>
+
+							<p
+								class="form-note"
+								style="
+									text-align: center;
+									margin-top: 2rem;
+									margin-bottom: 1.5rem;
+									font-size: var(--font-size-sm);
+									color: var(--bmw-gray);
+								"
+							>
+								Нажимая кнопку, вы соглашаетесь с условиями обработки
+								персональных данных
+							</p>
+							<button type="submit" class="btn btn-primary btn-block">
+								Отправить заявку
+							</button>
+						</form>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Футер -->
+		<footer class="footer">
+			<div class="footer-inner">
+				<div class="footer-top">
+					<div class="footer-column">
+						<h4 class="footer-column-title">BMW Россия</h4>
+						<ul class="footer-links">
+							<li><a href="history.html" class="footer-link">О компании</a></li>
+							<li>
+								<a href="dealers.html" class="footer-link">Дилерские центры</a>
+							</li>
+							<li><a href="feedback.html" class="footer-link">Контакты</a></li>
+						</ul>
+					</div>
+					<div class="footer-column">
+						<h4 class="footer-column-title">Автомобили</h4>
+						<ul class="footer-links">
+							<li><a href="catalog.html" class="footer-link">Все модели</a></li>
+							<li>
+								<a href="catalog.html?condition=new" class="footer-link"
+									>Новые</a
+								>
+							</li>
+							<li>
+								<a href="catalog.html?condition=used" class="footer-link"
+									>С пробегом</a
+								>
+							</li>
+						</ul>
+					</div>
+					<div class="footer-column">
+						<h4 class="footer-column-title">Услуги</h4>
+						<ul class="footer-links">
+							<li><a href="service.html" class="footer-link">Сервис</a></li>
+							<li>
+								<a href="testdrive.html" class="footer-link">Тест-драйв</a>
+							</li>
+							<li><a href="leasing.html" class="footer-link">Лизинг</a></li>
+						</ul>
+					</div>
+					<div class="footer-column">
+						<h4 class="footer-column-title">Контакты</h4>
+						<div class="footer-contact">
+							<div class="footer-contact-item">
+								<span class="footer-phone">8 800 500-55-55</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<p class="footer-copyright">© 2026 BMW Россия. Все права защищены.</p>
+				</div>
+			</div>
+		</footer>
+
+		<div class="toast-container" id="toastContainer"></div>
+
+		<script src="../src/js/main.js"></script>
+		<script src="../src/js/navigation.js"></script>
+		<!-- Three.js (3D Graphics) -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+		<!-- GSAP & Lenis -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+		<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+		<!-- Custom Animations -->
+		<script src="../src/js/animations.js"></script>
+		<script src="../src/js/page-header-3d.js"></script>
+		<script src="../src/js/3d-logo.js"></script>
+	</body>
+</html>

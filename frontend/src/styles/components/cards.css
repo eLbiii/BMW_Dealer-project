@@ -1,0 +1,426 @@
+/**
+ * Стили карточек для сайта BMW Dealer
+ * Карточки автомобилей и отзывов
+ */
+
+/* ==================== БАЗОВАЯ КАРТОЧКА ==================== */
+
+.card {
+	background: rgba(255, 255, 255, 0.03);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: var(--radius-lg);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	transition: all var(--transition-normal);
+}
+
+.card:hover {
+	transform: translateY(-5px);
+	background: rgba(255, 255, 255, 0.05);
+	border-color: rgba(255, 255, 255, 0.15);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.card-body {
+	padding: 1.5rem;
+}
+
+.card-title {
+	font-size: var(--font-size-xl);
+	font-weight: var(--font-weight-semibold);
+	margin-bottom: 0.5rem;
+	color: var(--bmw-black);
+}
+
+.card-text {
+	color: var(--bmw-gray-dark);
+	font-size: var(--font-size-base);
+	line-height: 1.6;
+}
+
+/* ==================== КАРТОЧКА АВТОМОБИЛЯ ==================== */
+
+/* ==================== КАРТОЧКА АВТОМОБИЛЯ (REDESIGN: M-STYLE) ==================== */
+
+.car-card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background: rgba(25, 25, 25, 0.6);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-radius: var(--radius-lg);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+	overflow: hidden;
+	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	position: relative;
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	transform-style: preserve-3d;
+}
+
+.car-card:hover {
+	border-color: rgba(255, 255, 255, 0.2);
+	box-shadow: 0 15px 40px rgba(28, 105, 212, 0.3);
+}
+
+/* Изображение автомобиля */
+.car-card-image {
+	position: relative;
+	width: 100%;
+	padding-top: 56.25%; /* 16:9 Aspect Ratio */
+	background: transparent;
+	overflow: hidden;
+	margin-bottom: 1rem;
+}
+
+.car-card-image img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: contain; /* OR cover if we want full bleed, but 'contain' is safer for whole car visibility */
+	object-position: center;
+	background: transparent;
+	transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.car-card:hover .car-card-image img {
+	transform: scale(1.03);
+}
+
+/* Бейджи - Minimalist text */
+.car-card-badges {
+	position: absolute;
+	top: 1rem;
+	left: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	z-index: 2;
+}
+
+.car-badge {
+	padding: 0.1rem 0.5rem;
+	font-size: 0.7rem;
+	font-weight: 800;
+	text-transform: uppercase;
+	border-radius: 2px;
+	color: #fff;
+	background: #333;
+	letter-spacing: 0.5px;
+}
+
+.car-badge.new {
+	background: #333;
+	color: #fff;
+}
+.car-badge.condition {
+	background: #000;
+	color: #fff;
+}
+
+/* Контент карточки */
+.car-card-content {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 0 0.5rem;
+}
+
+.car-card-title {
+	font-size: 1.25rem;
+	font-weight: 800; /* Extra Bold */
+	color: #fff;
+	margin-bottom: 0.25rem;
+	line-height: 1.2;
+	text-transform: uppercase;
+	font-family: sans-serif; /* Setup correct font stack globally later */
+	transform: translateZ(30px);
+}
+
+.car-card-subtitle {
+	font-size: 0.85rem;
+	color: #aaa;
+	margin-bottom: 1rem;
+	font-weight: 500;
+	transform: translateZ(20px);
+}
+
+/* Характеристики - Minimal single line */
+.car-card-specs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+	border-top: 1px solid #333;
+	padding-top: 0.5rem;
+}
+
+.car-spec {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	font-size: 0.8rem;
+	color: #ccc;
+	font-weight: 600;
+	transform: translateZ(25px);
+}
+
+.car-spec svg {
+	width: 14px;
+	height: 14px;
+	color: var(--bmw-blue-light);
+}
+
+/* Нижняя часть карточки */
+.car-card-footer {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-top: auto;
+	padding-top: 1rem;
+	border-top: none;
+	transform: translateZ(40px);
+}
+
+.car-card-price {
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: #fff;
+}
+
+.car-card-price span {
+	font-size: 0.9rem;
+	font-weight: 400;
+	color: #aaa;
+}
+
+/* Link style for button */
+.car-card-link {
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: var(--bmw-blue-light);
+	text-decoration: none;
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	transition:
+		gap 0.3s ease,
+		color 0.3s ease;
+}
+
+.car-card-link::after {
+	content: '→';
+	font-size: 1.1rem;
+	transition: transform 0.3s ease;
+}
+
+.car-card-link:hover {
+	gap: 10px;
+	color: #fff;
+}
+
+/* ==================== КАРТОЧКА ОТЗЫВА ==================== */
+
+.review-card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.03);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: var(--radius-lg);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+	padding: 1.5rem;
+	transition: all var(--transition-normal);
+}
+
+.review-card:hover {
+	transform: translateY(-5px);
+	background: rgba(255, 255, 255, 0.05);
+	border-color: rgba(255, 255, 255, 0.15);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Шапка отзыва */
+.review-card-header {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.review-avatar {
+	width: 50px;
+	height: 50px;
+	border-radius: var(--radius-full);
+	background: var(--bmw-gradient-primary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--bmw-white);
+	font-size: var(--font-size-lg);
+	font-weight: var(--font-weight-bold);
+	flex-shrink: 0;
+}
+
+.review-info {
+	flex: 1;
+}
+
+.review-author {
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-semibold);
+	color: var(--bmw-black);
+	margin-bottom: 0.25rem;
+}
+
+.review-car {
+	font-size: var(--font-size-sm);
+	color: var(--bmw-gray);
+}
+
+/* Рейтинг */
+.review-rating {
+	display: flex;
+	gap: 0.25rem;
+}
+
+.review-rating svg {
+	width: 18px;
+	height: 18px;
+	color: #ffc107;
+}
+
+.review-rating svg.empty {
+	color: var(--bmw-gray-light);
+}
+
+/* Текст отзыва */
+.review-text {
+	flex: 1;
+	font-size: var(--font-size-base);
+	color: var(--bmw-gray-dark);
+	line-height: 1.6;
+	margin-bottom: 1rem;
+}
+
+/* Дата отзыва */
+.review-date {
+	font-size: var(--font-size-xs);
+	color: var(--bmw-gray);
+	margin-top: auto;
+}
+
+/* ==================== СЕТКА КАРТОЧЕК ==================== */
+
+.cards-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 5rem;
+}
+
+.cards-grid-5 {
+	grid-template-columns: repeat(5, 1fr);
+}
+
+.cards-grid-4 {
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.cards-grid-3 {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.cards-grid-2 {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+/* Адаптивность сетки */
+@media (max-width: 1400px) {
+	.cards-grid-5 {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media (max-width: 1200px) {
+	.cards-grid-5,
+	.cards-grid-4 {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 900px) {
+	.cards-grid-5,
+	.cards-grid-4,
+	.cards-grid-3 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 600px) {
+	.cards-grid,
+	.cards-grid-5,
+	.cards-grid-4,
+	.cards-grid-3,
+	.cards-grid-2 {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ==================== ИНФОРМАЦИОННЫЕ КАРТОЧКИ ==================== */
+
+.info-card {
+	background: rgba(26, 26, 26, 0.4) !important;
+	backdrop-filter: blur(15px);
+	-webkit-backdrop-filter: blur(15px);
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	border-radius: var(--radius-lg);
+	padding: 2rem;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+	text-align: center;
+	transition: all var(--transition-normal);
+}
+
+.info-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 15px 40px rgba(28, 105, 212, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	background: rgba(26, 26, 26, 0.6) !important;
+}
+
+.info-card-icon {
+	width: 60px;
+	height: 60px;
+	margin: 0 auto 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--bmw-gradient-primary);
+	border-radius: var(--radius-full);
+	color: var(--bmw-white);
+}
+
+.info-card-icon svg {
+	width: 30px;
+	height: 30px;
+}
+
+.info-card-title {
+	font-size: var(--font-size-xl);
+	font-weight: var(--font-weight-semibold);
+	margin-bottom: 0.75rem;
+	color: #ffffff;
+}
+
+.info-card-text {
+	font-size: var(--font-size-base);
+	color: #cccccc;
+	line-height: 1.6;
+}

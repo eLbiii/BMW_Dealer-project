@@ -1,0 +1,318 @@
+/**
+ * Стили кнопок BMW Dealer
+ * Темно-синяя цветовая схема BMW
+ */
+
+:root {
+	/* Цвета BMW */
+	--bmw-blue-primary: #1c69d4;
+	--bmw-blue-dark: #0653b6;
+	--bmw-blue-darker: #003d7a;
+	--bmw-blue-darkest: #001e3c;
+	--bmw-blue-light: #4d8fe0;
+
+	/* Restored Defaults */
+	--bmw-white: #ffffff;
+	--bmw-black: #000000;
+	--bmw-gray-light: #f5f5f5;
+	--bmw-gray: #8c8c8c;
+	--bmw-gray-dark: #4a4a4a;
+
+	--bmw-red: #e22718;
+	--bmw-green: #00a651;
+
+	/* Градиенты - Premium 3D Style */
+	--bmw-gradient-primary: linear-gradient(
+		135deg,
+		#1c69d4 0%,
+		#0b4ba7 50%,
+		#06357a 100%
+	);
+	--bmw-gradient-dark: linear-gradient(
+		135deg,
+		#0a1428 0%,
+		#040a15 50%,
+		#000000 100%
+	);
+	--bmw-gradient-accent: linear-gradient(135deg, #e22718 0%, #b8160a 100%);
+
+	/* Hero gradient optimized for dark, can keep or revert */
+	--bmw-gradient-hero: linear-gradient(
+		180deg,
+		rgba(2, 6, 15, 0.4) 0%,
+		rgba(0, 0, 0, 0.8) 100%
+	);
+
+	/* Тени - Stronger for dark mode depth */
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+	--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+	--shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+	--shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6);
+	--shadow-button: 0 4px 15px rgba(28, 105, 212, 0.3);
+
+	/* Переходы */
+	--transition-fast: 0.15s ease;
+	--transition-normal: 0.3s ease;
+	--transition-slow: 0.5s ease;
+
+	/* Скругления */
+	--radius-sm: 4px;
+	--radius-md: 8px;
+	--radius-lg: 12px;
+	--radius-xl: 16px;
+	--radius-full: 9999px;
+}
+
+/* ==================== КНОПКИ ==================== */
+
+/* Базовый стиль кнопки */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	padding: 1rem 2.25rem;
+	font-family: var(--font-primary);
+	font-size: var(--font-size-base);
+	font-weight: 700;
+	line-height: 1;
+	text-align: center;
+	text-decoration: none;
+	border: 2px solid transparent;
+	border-radius: 12px;
+	cursor: pointer;
+	transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+	position: relative;
+	overflow: hidden;
+	white-space: nowrap;
+	letter-spacing: 0.5px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn > * {
+	position: relative;
+	z-index: 1;
+}
+
+.btn:active {
+	transform: scale(0.97);
+}
+
+/* Эффект блика (shine) при наведении */
+.btn::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 50%;
+	height: 100%;
+	background: linear-gradient(
+		to right,
+		rgba(255, 255, 255, 0) 0%,
+		rgba(255, 255, 255, 0.25) 50%,
+		rgba(255, 255, 255, 0) 100%
+	);
+	transform: skewX(-25deg);
+	z-index: 0;
+	pointer-events: none;
+}
+
+.btn:hover::before {
+	animation: btnShine 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes btnShine {
+	0% {
+		left: -100%;
+	}
+	50% {
+		left: 200%;
+	}
+	100% {
+		left: 200%;
+	}
+}
+
+.btn:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+/* Эффект ripple при клике */
+.btn::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	transition:
+		width 0.6s ease,
+		height 0.6s ease;
+}
+
+.btn:active::after {
+	width: 300px;
+	height: 300px;
+}
+
+/* Основная кнопка (синяя) */
+.btn-primary {
+	background: var(--bmw-gradient-primary);
+	color: var(--bmw-white);
+	box-shadow:
+		0 4px 15px rgba(28, 105, 212, 0.4),
+		inset 0 1px 0 rgba(255, 255, 255, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary:hover {
+	background: var(--bmw-blue-dark);
+	box-shadow: 0 8px 25px rgba(28, 105, 212, 0.6);
+}
+
+.btn-primary:active {
+	box-shadow: var(--shadow-md);
+}
+
+/* Вторичная кнопка (темная) */
+.btn-secondary {
+	background: var(--bmw-gradient-dark);
+	color: var(--bmw-white);
+	box-shadow:
+		var(--shadow-md),
+		inset 0 1px 0 rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.btn-secondary:hover {
+	background: var(--bmw-blue-darkest);
+	box-shadow: var(--shadow-lg);
+}
+
+/* Кнопка с обводкой */
+.btn-outline {
+	background: transparent;
+	color: var(--bmw-blue-primary);
+	border-color: var(--bmw-blue-primary);
+}
+
+.btn-outline:hover {
+	background: var(--bmw-blue-primary);
+	color: var(--bmw-white);
+	box-shadow: var(--shadow-button);
+}
+
+/* Белая кнопка с обводкой */
+.btn-outline-white {
+	background: transparent;
+	color: var(--bmw-white);
+	border-color: var(--bmw-white);
+}
+
+.btn-outline-white:hover {
+	background: rgba(255, 255, 255, 0.1) !important;
+	color: var(--bmw-white) !important;
+	box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.btn-outline-white:hover > span {
+	color: var(--bmw-white) !important;
+}
+
+/* Текстовая кнопка (ссылка) */
+.btn-link {
+	background: transparent;
+	color: var(--bmw-blue-primary);
+	padding: 0.5rem;
+	border-radius: 0;
+}
+
+.btn-link:hover {
+	color: var(--bmw-blue-dark);
+	text-decoration: underline;
+}
+
+/* Кнопка успеха */
+.btn-success {
+	background: var(--bmw-green);
+	color: var(--bmw-white);
+}
+
+.btn-success:hover {
+	background: #008844;
+}
+
+/* Кнопка опасности */
+.btn-danger {
+	background: var(--bmw-red);
+	color: var(--bmw-white);
+}
+
+.btn-danger:hover {
+	background: #c42015;
+}
+
+/* ==================== РАЗМЕРЫ КНОПОК ==================== */
+
+.btn-sm {
+	padding: 0.5rem 1rem;
+	font-size: var(--font-size-sm);
+}
+
+.btn-lg {
+	padding: 1rem 2.5rem;
+	font-size: var(--font-size-lg);
+}
+
+.btn-xl {
+	padding: 1.25rem 3rem;
+	font-size: var(--font-size-xl);
+}
+
+/* Полноширинная кнопка */
+.btn-block {
+	width: 100%;
+}
+
+/* ==================== ГРУППА КНОПОК ==================== */
+
+.btn-group {
+	display: inline-flex;
+	gap: 0;
+}
+
+.btn-group .btn {
+	border-radius: 0;
+}
+
+.btn-group .btn:first-child {
+	border-radius: 12px 0 0 12px;
+}
+
+.btn-group .btn:last-child {
+	border-radius: 0 12px 12px 0;
+}
+
+/* ==================== ИКОНКИ В КНОПКАХ ==================== */
+
+.btn svg,
+.btn .icon {
+	width: 1.25em;
+	height: 1.25em;
+	flex-shrink: 0;
+}
+
+/* Кнопка только с иконкой */
+.btn-icon {
+	padding: 0.75rem;
+	border-radius: var(--radius-full);
+}
+
+.btn-icon svg {
+	width: 1.5rem;
+	height: 1.5rem;
+}

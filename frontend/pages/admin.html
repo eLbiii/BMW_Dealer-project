@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BMW Admin Space</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../src/styles/admin-new.css" />
+	</head>
+	<body>
+		<div class="admin-layout" id="app">
+			<!-- Sidebar -->
+			<aside class="sidebar">
+				<div class="logo">
+					<svg viewBox="0 0 100 100" class="bmw-logo">
+						<circle
+							cx="50"
+							cy="50"
+							r="48"
+							fill="none"
+							stroke="#fff"
+							stroke-width="2"
+						/>
+						<path d="M50 8 A42 42 0 0 1 92 50 L50 50 Z" fill="#1c69d4" />
+						<path d="M50 92 A42 42 0 0 1 8 50 L50 50 Z" fill="#1c69d4" />
+						<path d="M92 50 A42 42 0 0 1 50 92 L50 50 Z" fill="#fff" />
+						<path d="M8 50 A42 42 0 0 1 50 8 L50 50 Z" fill="#fff" />
+					</svg>
+					<span>ADMIN SPACE</span>
+				</div>
+
+				<nav class="nav-menu">
+					<button class="nav-item active" data-tab="dashboard">
+						<span class="icon">📊</span> Дашборд
+					</button>
+					<button class="nav-item" data-tab="catalog">
+						<span class="icon">🚘</span> Каталог
+					</button>
+					<button class="nav-item" data-tab="requests">
+						<span class="icon">📨</span> Заявки
+					</button>
+					<button class="nav-item" data-tab="feedback">
+						<span class="icon">💬</span> Отзывы
+					</button>
+					<button class="nav-item" data-tab="users">
+						<span class="icon">👥</span> Пользователи
+					</button>
+				</nav>
+
+				<button class="logout-btn" id="logoutBtn">
+					<span class="icon">🚪</span> Выйти
+				</button>
+			</aside>
+
+			<!-- Main Content -->
+			<main class="main-content">
+				<!-- Login Overlay -->
+				<div id="loginOverlay" class="login-overlay">
+					<div class="login-box">
+						<h2>Admin Access</h2>
+						<form id="loginForm">
+							<input
+								type="text"
+								name="username"
+								placeholder="Username"
+								required
+							/>
+							<input
+								type="password"
+								name="password"
+								placeholder="Password"
+								required
+							/>
+							<button type="submit">Войти</button>
+						</form>
+					</div>
+				</div>
+
+				<!-- Dashboard View -->
+				<div id="dashboard" class="view-section active">
+					<header class="view-header">
+						<h1>Обзор системы</h1>
+					</header>
+					<div class="stats-grid">
+						<div class="stat-card">
+							<h3>Всего заявок</h3>
+							<div class="value" id="statRequests">0</div>
+						</div>
+						<div class="stat-card">
+							<h3>Авто в каталоге</h3>
+							<div class="value" id="statCars">0</div>
+						</div>
+						<div class="stat-card">
+							<h3>Пользователей</h3>
+							<div class="value" id="statUsers">0</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Catalog View -->
+				<div id="catalog" class="view-section">
+					<header class="view-header">
+						<h1>Каталог автомобилей</h1>
+						<button class="action-btn" onclick="openCarModal()">
+							+ Добавить автомобиль
+						</button>
+					</header>
+					<div class="table-wrapper">
+						<table class="data-table">
+							<thead>
+								<tr>
+									<th>Фото</th>
+									<th>Название</th>
+									<th>Цена</th>
+									<th>Двигатель</th>
+									<th>Действия</th>
+								</tr>
+							</thead>
+							<tbody id="catalogList"></tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Requests View -->
+				<div id="requests" class="view-section">
+					<header class="view-header">
+						<h1>Управление заявками</h1>
+					</header>
+
+					<div class="sub-tabs">
+						<button class="sub-tab active" data-type="service">Сервис</button>
+						<button class="sub-tab" data-type="testdrive">Тест-драйв</button>
+						<button class="sub-tab" data-type="leasing">Лизинг</button>
+						<button class="sub-tab" data-type="credit">Кредит</button>
+						<button class="sub-tab" data-type="insurance">Страхование</button>
+					</div>
+
+					<div class="table-wrapper">
+						<table class="data-table">
+							<thead>
+								<tr id="requestsHeader">
+									<!-- Dynamic headers -->
+								</tr>
+							</thead>
+							<tbody id="requestsList"></tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Feedback View -->
+				<div id="feedback" class="view-section">
+					<header class="view-header">
+						<h1>Отзывы клиентов</h1>
+						<small>Опубликованные отзывы видны на главной странице</small>
+					</header>
+					<div class="table-wrapper">
+						<table class="data-table">
+							<thead>
+								<tr>
+									<th>Дата</th>
+									<th>Клиент</th>
+									<th>Отзыв</th>
+									<th>Статус</th>
+									<th>Действия</th>
+								</tr>
+							</thead>
+							<tbody id="feedbackList"></tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Users View -->
+				<div id="users" class="view-section">
+					<header class="view-header">
+						<h1>Пользователи</h1>
+					</header>
+					<div class="table-wrapper">
+						<table class="data-table">
+							<thead>
+								<tr>
+									<th>Регистрация</th>
+									<th>Имя</th>
+									<th>Email</th>
+									<th>Роль</th>
+									<th>Действия</th>
+								</tr>
+							</thead>
+							<tbody id="usersList"></tbody>
+						</table>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<!-- Universal Edit Modal -->
+		<div class="modal-backdrop" id="modal">
+			<div class="modal-window">
+				<div class="modal-header">
+					<h2 id="modalTitle">Редактирование</h2>
+					<button class="close-modal" onclick="closeModal()">×</button>
+				</div>
+				<div class="modal-body">
+					<form id="modalForm">
+						<input type="hidden" name="id" id="modalId" />
+						<input type="hidden" name="type" id="modalType" />
+						<div id="modalFields"></div>
+
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn-delete"
+								id="modalDeleteBtn"
+								onclick="deleteItem()"
+							>
+								Удалить
+							</button>
+							<button type="submit" class="btn-save">Сохранить</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Delete Confirmation Modal -->
+		<div class="modal-backdrop" id="deleteModal">
+			<div class="modal-window" style="max-width: 400px; text-align: center">
+				<div
+					class="modal-header"
+					style="justify-content: center; border: none; padding-bottom: 0"
+				>
+					<div
+						style="
+							background: rgba(226, 39, 24, 0.1);
+							padding: 15px;
+							border-radius: 50%;
+							display: inline-flex;
+						"
+					>
+						<svg
+							viewBox="0 0 24 24"
+							width="32"
+							height="32"
+							stroke="#e22718"
+							stroke-width="2"
+							fill="none"
+						>
+							<polyline points="3 6 5 6 21 6"></polyline>
+							<path
+								d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+							></path>
+						</svg>
+					</div>
+				</div>
+				<div class="modal-body">
+					<h2 style="margin-bottom: 10px">Вы уверены?</h2>
+					<p style="color: var(--text-muted); margin-bottom: 20px">
+						Это действие нельзя будет отменить.
+					</p>
+					<div style="display: flex; gap: 10px; justify-content: center">
+						<button
+							class="btn-cancel"
+							onclick="closeDeleteModal()"
+							style="
+								background: transparent;
+								border: 1px solid var(--border);
+								color: #fff;
+								padding: 0.8rem 1.5rem;
+								border-radius: var(--radius);
+								cursor: pointer;
+							"
+						>
+							Отмена
+						</button>
+						<button
+							class="btn-confirm-delete"
+							id="confirmDeleteAction"
+							style="
+								background: var(--danger);
+								color: #fff;
+								border: none;
+								padding: 0.8rem 1.5rem;
+								border-radius: var(--radius);
+								cursor: pointer;
+							"
+						>
+							Удалить
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../src/js/admin-new.js"></script>
+	</body>
+</html>

@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Лизинг BMW для юридических и физических лиц. Оптимизация налогов, гибкие графики платежей."
+		/>
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet" />
+		<title>Лизинг | BMW Дилер</title>
+		<link rel="stylesheet" href="../src/styles/main.css" />
+	</head>
+	<body id="page-leasing">
+		<!-- Шапка -->
+		<header class="header" id="header">
+			<div class="header-inner">
+				<div class="header-logo">
+					<a href="../index.html">
+						<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+							<!-- Внешнее кольцо -->
+							<circle
+								cx="50"
+								cy="50"
+								r="48"
+								fill="none"
+								stroke="#fff"
+								stroke-width="2"
+							/>
+							<!-- Синие и белые секторы -->
+							<path d="M50 8 A42 42 0 0 1 92 50 L50 50 Z" fill="#1c69d4" />
+							<path d="M50 92 A42 42 0 0 1 8 50 L50 50 Z" fill="#1c69d4" />
+							<path d="M92 50 A42 42 0 0 1 50 92 L50 50 Z" fill="#fff" />
+							<path d="M8 50 A42 42 0 0 1 50 8 L50 50 Z" fill="#fff" />
+						</svg>
+						<span class="header-logo-text">BMW</span>
+					</a>
+				</div>
+				<nav class="header-nav">
+					<ul class="header-nav-list">
+						<li class="nav-item">
+							<a href="catalog.html" class="nav-link">Автомобили</a>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link"
+								>Владельцам<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<polyline points="6 9 12 15 18 9"></polyline></svg
+							></a>
+							<div class="nav-dropdown">
+								<a href="service.html" class="nav-dropdown-item"
+									>Запись на сервис</a
+								>
+								<a href="warranty.html" class="nav-dropdown-item"
+									>Условия гарантии</a
+								>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a href="#" class="nav-link"
+								>Больше о BMW<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<polyline points="6 9 12 15 18 9"></polyline></svg
+							></a>
+							<div class="nav-dropdown">
+								<a href="credit.html" class="nav-dropdown-item"
+									>Покупка в кредит</a
+								>
+								<a href="leasing.html" class="nav-dropdown-item">Лизинг</a>
+								<a href="insurance.html" class="nav-dropdown-item"
+									>Страхование</a
+								>
+								<a href="history.html" class="nav-dropdown-item">История BMW</a>
+								<a href="reviews.html" class="nav-dropdown-item">Отзывы</a>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a href="testdrive.html" class="nav-link">Тест-драйв</a>
+						</li>
+						<li class="nav-item">
+							<a href="faq.html" class="nav-link">FAQ</a>
+						</li>
+						<li class="nav-item">
+							<a href="feedback.html" class="nav-link">Контакты</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="header-actions">
+					<a
+						href="dealers.html"
+						class="header-action-btn"
+						title="Карта дилеров"
+					>
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+					</a>
+					<a href="login.html" class="header-action-btn" title="Личный кабинет">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+							<circle cx="12" cy="7" r="4"></circle>
+						</svg>
+					</a>
+					<button class="burger-btn" id="burgerBtn">
+						<span></span><span></span><span></span>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<!-- Мобильное меню -->
+		<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+		<div class="mobile-menu" id="mobileMenu">
+			<!-- ... (копируем структуру мобильного меню из других файлов для консистенции) ... -->
+			<div class="mobile-menu-header">
+				<div class="mobile-menu-logo" style="width: 50px; height: 50px;">
+					<!-- 3D Logo injected here -->
+				</div>
+				<div style="display: flex; gap: 1rem; align-items: center">
+					<a href="dealers.html" class="header-action-btn" title="Найти дилера">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+					</a>
+					<button class="mobile-menu-close" id="mobileMenuClose">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<line x1="18" y1="6" x2="6" y2="18"></line>
+							<line x1="6" y1="6" x2="18" y2="18"></line>
+						</svg>
+					</button>
+				</div>
+			</div>
+			<nav class="mobile-menu-nav">
+				<ul class="mobile-nav-list">
+					<li class="mobile-nav-item">
+						<a href="catalog.html" class="mobile-nav-link">Автомобили</a>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="#" class="mobile-nav-link"
+							>Владельцам
+							<svg
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<polyline points="6 9 12 15 18 9"></polyline></svg
+						></a>
+						<div class="mobile-nav-submenu">
+							<a href="service.html" class="mobile-nav-sublink"
+								>Запись на сервис</a
+							><a href="warranty.html" class="mobile-nav-sublink"
+								>Условия гарантии</a
+							>
+						</div>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="testdrive.html" class="mobile-nav-link">Тест-драйв</a>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="faq.html" class="mobile-nav-link">FAQ</a>
+					</li>
+					<li class="mobile-nav-item">
+						<a href="feedback.html" class="mobile-nav-link">Контакты</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="header-spacer"></div>
+
+		<!-- Заголовок страницы -->
+		<section class="page-header">
+			<div class="container">
+				<h1 class="page-title">BMW Лизинг</h1>
+				<p class="page-subtitle">
+					Эффективные финансовые решения для вашего бизнеса.
+				</p>
+			</div>
+		</section>
+
+		<main class="main-content">
+			<section class="content-section">
+				<div class="container">
+					<div class="section-header">
+						<h2 class="section-title">Программы лизинга</h2>
+					</div>
+
+					<!-- Promo Banner -->
+					<div
+						class="promo-banner"
+						style="
+							background: linear-gradient(135deg, #0066b1 0%, #1c69d4 100%);
+							border-radius: 1rem;
+							padding: 3rem;
+							color: white;
+							display: flex;
+							align-items: center;
+							justify-content: space-between;
+							gap: 2rem;
+							margin-bottom: 4rem;
+							position: relative;
+							overflow: hidden;
+							box-shadow: 0 10px 30px rgba(28, 105, 212, 0.3);
+						"
+					>
+						<div style="position: relative; z-index: 2; max-width: 600px">
+							<span
+								style="
+									background: #ffcc00;
+									color: #000;
+									padding: 0.3rem 0.8rem;
+									border-radius: 4px;
+									font-weight: 800;
+									font-size: 0.8rem;
+									text-transform: uppercase;
+									margin-bottom: 1rem;
+									display: inline-block;
+								"
+								>Спецпредложение</span
+							>
+							<h3
+								style="
+									font-size: clamp(1.5rem, 3vw, 2.5rem);
+									margin-bottom: 1rem;
+									font-weight: 800;
+									line-height: 1.1;
+								"
+							>
+								BMW 7 Series в лизинг всего за 1.5%
+							</h3>
+							<p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 0">
+								Оформите BMW 7 серии или i7 в лизинг до конца месяца и получите
+								пакет сервисного обслуживания на 3 года в подарок.
+							</p>
+						</div>
+						<div style="flex-shrink: 0; position: relative; z-index: 2">
+							<button
+								class="btn"
+								style="
+									background: white;
+									color: #1c69d4;
+									border: none;
+									font-weight: bold;
+									padding: 1rem 2rem;
+								"
+								onclick="BMWDealer.openModal('leasingCorporateModal')"
+							>
+								Узнать подробнее
+							</button>
+						</div>
+
+						<div
+							style="
+								position: absolute;
+								right: -5%;
+								top: 50%;
+								transform: translateY(-50%) rotate(10deg);
+								font-size: 15rem;
+								font-weight: 900;
+								color: white;
+								opacity: 0.07;
+								pointer-events: none;
+								white-space: nowrap;
+							"
+						>
+							LEASE
+						</div>
+					</div>
+
+					<div class="cards-grid cards-grid-2">
+						<div class="info-card">
+							<h3 class="info-card-title">Корпоративный лизинг</h3>
+							<ul class="info-list" style="margin-top: 1rem">
+								<li class="info-list-item">
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+									>
+										<polyline points="20 6 9 17 4 12"></polyline>
+									</svg>
+									<span>Аванс от 0%</span>
+								</li>
+								<li class="info-list-item">
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+									>
+										<polyline points="20 6 9 17 4 12"></polyline>
+									</svg>
+									<span>Срок до 60 месяцев</span>
+								</li>
+								<li class="info-list-item">
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+									>
+										<polyline points="20 6 9 17 4 12"></polyline>
+									</svg>
+									<span>Оптимизация НДС и налога на прибыль</span>
+								</li>
+							</ul>
+							<button
+								class="btn btn-primary"
+								style="margin-top: 2rem"
+								onclick="BMWDealer.openModal('leasingCorporateModal')"
+							>
+								Получить предложение
+							</button>
+						</div>
+
+						<div class="info-card">
+							<h3 class="info-card-title">Лизинг для физических лиц</h3>
+							<ul class="info-list" style="margin-top: 1rem">
+								<li class="info-list-item">
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+									>
+										<polyline points="20 6 9 17 4 12"></polyline>
+									</svg>
+									<span>Без подтверждения дохода</span>
+								</li>
+								<li class="info-list-item">
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+									>
+										<polyline points="20 6 9 17 4 12"></polyline>
+									</svg>
+									<span>Включение страховки в платежи</span>
+								</li>
+								<li class="info-list-item">
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+									>
+										<polyline points="20 6 9 17 4 12"></polyline>
+									</svg>
+									<span>Возможность смены авто каждые 3 года</span>
+								</li>
+							</ul>
+							<button
+								class="btn btn-primary"
+								style="margin-top: 2rem"
+								onclick="BMWDealer.openModal('leasingIndividualModal')"
+							>
+								Рассчитать условия
+							</button>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Футер -->
+		<footer class="footer">
+			<div class="footer-inner">
+				<div class="footer-top">
+					<div class="footer-column">
+						<h4 class="footer-column-title">BMW Россия</h4>
+						<ul class="footer-links">
+							<li><a href="history.html" class="footer-link">О компании</a></li>
+							<li>
+								<a href="dealers.html" class="footer-link">Дилерские центры</a>
+							</li>
+							<li><a href="feedback.html" class="footer-link">Контакты</a></li>
+						</ul>
+					</div>
+					<div class="footer-column">
+						<h4 class="footer-column-title">Автомобили</h4>
+						<ul class="footer-links">
+							<li><a href="catalog.html" class="footer-link">Все модели</a></li>
+							<li>
+								<a href="catalog.html?condition=new" class="footer-link"
+									>Новые</a
+								>
+							</li>
+							<li>
+								<a href="catalog.html?condition=used" class="footer-link"
+									>С пробегом</a
+								>
+							</li>
+						</ul>
+					</div>
+					<div class="footer-column">
+						<h4 class="footer-column-title">Услуги</h4>
+						<ul class="footer-links">
+							<li><a href="service.html" class="footer-link">Сервис</a></li>
+							<li>
+								<a href="testdrive.html" class="footer-link">Тест-драйв</a>
+							</li>
+							<li><a href="leasing.html" class="footer-link">Лизинг</a></li>
+						</ul>
+					</div>
+					<div class="footer-column">
+						<h4 class="footer-column-title">Контакты</h4>
+						<div class="footer-contact">
+							<div class="footer-contact-item">
+								<span class="footer-phone">8 800 500-55-55</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<p class="footer-copyright">© 2026 BMW Россия. Все права защищены.</p>
+				</div>
+			</div>
+		</footer>
+
+		<div class="toast-container" id="toastContainer"></div>
+
+		<!-- Модальное окно: Лизинг для физ. лиц -->
+		<div class="modal-overlay" id="leasingIndividualModal">
+			<div class="modal-container">
+				<button class="modal-close">
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+					>
+						<line x1="18" y1="6" x2="6" y2="18"></line>
+						<line x1="6" y1="6" x2="18" y2="18"></line>
+					</svg>
+				</button>
+				<div class="modal-header">
+					<h3 class="modal-title">Лизинг для физических лиц</h3>
+				</div>
+				<div class="modal-body">
+					<form action="/api/leasing" method="POST" data-ajax>
+						<input type="hidden" name="type" value="individual" />
+						<div class="form-group">
+							<label class="form-label">Ваше имя</label>
+							<input
+								type="text"
+								name="contactPerson"
+								class="form-control"
+								required
+							/>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Телефон</label>
+							<input type="tel" name="phone" class="form-control" required />
+						</div>
+						<div class="form-group">
+							<label class="form-label">Email</label>
+							<input type="email" name="email" class="form-control" required />
+						</div>
+						<div class="form-group">
+							<label class="form-label">Модель автомобиля</label>
+							<select name="model" class="form-control car-select" required>
+								<option value="">Выберите модель из каталога</option>
+								<!-- Будет заполнено через JS -->
+							</select>
+						</div>
+						<button type="submit" class="btn btn-primary w-full">
+							Отправить заявку
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Модальное окно: Лизинг для юр. лиц -->
+		<div class="modal-overlay" id="leasingCorporateModal">
+			<div class="modal-container">
+				<button class="modal-close">
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+					>
+						<line x1="18" y1="6" x2="6" y2="18"></line>
+						<line x1="6" y1="6" x2="18" y2="18"></line>
+					</svg>
+				</button>
+				<div class="modal-header">
+					<h3 class="modal-title">Корпоративный лизинг</h3>
+				</div>
+				<div class="modal-body">
+					<form action="/api/leasing" method="POST" data-ajax>
+						<input type="hidden" name="type" value="corporate" />
+						<div class="form-group">
+							<label class="form-label">Название компании</label>
+							<input
+								type="text"
+								name="companyName"
+								class="form-control"
+								required
+							/>
+						</div>
+						<div class="form-group">
+							<label class="form-label">ИНН</label>
+							<input type="text" name="inn" class="form-control" required />
+						</div>
+						<div class="form-group">
+							<label class="form-label">Контактное лицо</label>
+							<input
+								type="text"
+								name="contactPerson"
+								class="form-control"
+								required
+							/>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Телефон</label>
+							<input type="tel" name="phone" class="form-control" required />
+						</div>
+						<div class="form-group">
+							<label class="form-label">Email</label>
+							<input type="email" name="email" class="form-control" required />
+						</div>
+						<div class="form-group">
+							<label class="form-label">Модель автомобиля</label>
+							<select name="model" class="form-control car-select" required>
+								<option value="">Выберите модель из каталога</option>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-primary w-full">
+							Отправить заявку
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<script src="../src/js/main.js"></script>
+		<script src="../src/js/navigation.js"></script>
+		<!-- Three.js (3D Graphics) -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+		<!-- GSAP & Lenis -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+		<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+		<!-- Custom Animations -->
+		<script src="../src/js/animations.js"></script>
+		<script src="../src/js/page-header-3d.js"></script>
+		<script src="../src/js/3d-logo.js"></script>
+	</body>
+</html>

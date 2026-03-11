@@ -1,0 +1,24 @@
+[
+  {
+    "id": "mksaee2x4qum7fozpd4",
+    "lastName": "Исенгазиев",
+    "firstName": "Эльбрус",
+    "phone": "+79884294590",
+    "email": "elbrusgg@gmail.com",
+    "carModel": "X6",
+    "createdAt": "2026-01-24T12:29:37.353Z",
+    "status": "new",
+    "type": "testdrive"
+  },
+  {
+    "id": "mksb27f6prhv9m38x9",
+    "lastName": "Исенгазиев",
+    "firstName": "Эльбрус",
+    "phone": "+79884294590",
+    "email": "elbrusgg@gmail.com",
+    "carModel": "X5",
+    "createdAt": "2026-01-24T12:48:08.466Z",
+    "status": "cancelled",
+    "type": "testdrive"
+  }
+]

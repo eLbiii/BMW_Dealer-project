@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Личный кабинет | BMW</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--bg-dark: #050505;
+				--bg-card: #151515;
+				--text-main: #ffffff;
+				--text-muted: #888888;
+				--accent: #1c69d4;
+				--border: #222;
+			}
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				background: var(--bg-dark);
+				color: var(--text-main);
+				font-family: 'Outfit', sans-serif;
+				display: flex;
+				min-height: 100vh;
+			}
+
+			/* Sidebar */
+			.sidebar {
+				width: 280px;
+				background: #0a0a0a;
+				border-right: 1px solid var(--border);
+				padding: 2rem;
+				display: flex;
+				flex-direction: column;
+			}
+			.logo {
+				font-size: 1.5rem;
+				font-weight: 700;
+				margin-bottom: 3rem;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				text-decoration: none;
+				color: white;
+			}
+			.nav-link {
+				padding: 1rem;
+				color: var(--text-muted);
+				text-decoration: none;
+				display: block;
+				border-radius: 8px;
+				margin-bottom: 0.5rem;
+				transition: 0.3s;
+				cursor: pointer;
+			}
+			.nav-link:hover,
+			.nav-link.active {
+				background: var(--accent);
+				color: white;
+			}
+			.user-info-mini {
+				margin-top: auto;
+				padding-top: 1rem;
+				border-top: 1px solid var(--border);
+			}
+			.logout-btn {
+				color: #e22718;
+				cursor: pointer;
+				margin-top: 1rem;
+				display: block;
+			}
+
+			/* Main */
+			.main {
+				flex: 1;
+				padding: 3rem;
+				overflow-y: auto;
+			}
+			.section {
+				display: none;
+			}
+			.section.active {
+				display: block;
+				animation: fade 0.3s;
+			}
+			@keyframes fade {
+				from {
+					opacity: 0;
+					transform: translateY(10px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			h1 {
+				margin-bottom: 2rem;
+				font-size: 2.5rem;
+			}
+			h2 {
+				margin-bottom: 1.5rem;
+				font-size: 1.5rem;
+				color: var(--text-muted);
+			}
+
+			/* Cards */
+			.card {
+				background: rgba(10, 15, 25, 0.4);
+				backdrop-filter: blur(20px);
+				-webkit-backdrop-filter: blur(20px);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				box-shadow:
+					0 10px 40px rgba(0, 0, 0, 0.5),
+					inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+				border-radius: 16px;
+				padding: 2rem;
+				margin-bottom: 2rem;
+				max-width: 650px;
+				transition: box-shadow 0.3s ease;
+			}
+			.card:hover {
+				box-shadow:
+					0 15px 50px rgba(0, 0, 0, 0.6),
+					inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+			}
+
+			/* Forms */
+			.form-group {
+				margin-bottom: 1.5rem;
+			}
+			.label {
+				display: block;
+				margin-bottom: 0.5rem;
+				color: var(--text-muted);
+				font-size: 0.9rem;
+			}
+			.input {
+				width: 100%;
+				background: #000;
+				border: 1px solid var(--border);
+				color: white;
+				padding: 1rem;
+				border-radius: 8px;
+				font-family: inherit;
+			}
+			.btn {
+				background: var(--accent);
+				color: white;
+				border: none;
+				padding: 1rem 2rem;
+				border-radius: 8px;
+				cursor: pointer;
+				font-weight: 600;
+				font-size: 1rem;
+			}
+			.btn:hover {
+				background: #0d54b3;
+			}
+
+			/* History List */
+			.history-item {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 1.5rem;
+				border-bottom: 1px solid var(--border);
+			}
+			.history-item:last-child {
+				border-bottom: none;
+			}
+			.status-badge {
+				padding: 4px 12px;
+				border-radius: 20px;
+				font-size: 0.8rem;
+				background: #333;
+			}
+			.status-new {
+				background: #1c69d4;
+			}
+			.status-completed {
+				background: #00a651;
+			}
+
+			/* Car Visual */
+			.my-car-card {
+				display: flex;
+				gap: 2rem;
+				align-items: center;
+			}
+			.car-icon {
+				width: 100px;
+				height: 100px;
+				background: #222;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 2rem;
+			}
+		</style>
+	</head>
+	<body>
+		<aside class="sidebar">
+			<a href="../index.html" class="logo">
+				<svg width="30" height="30" viewBox="0 0 100 100">
+					<circle
+						cx="50"
+						cy="50"
+						r="48"
+						fill="none"
+						stroke="#fff"
+						stroke-width="2"
+					/>
+					<path d="M50 8 A42 42 0 0 1 92 50 L50 50 Z" fill="#1c69d4" />
+					<path d="M50 92 A42 42 0 0 1 8 50 L50 50 Z" fill="#1c69d4" />
+					<path d="M92 50 A42 42 0 0 1 50 92 L50 50 Z" fill="#fff" />
+					<path d="M8 50 A42 42 0 0 1 50 8 L50 50 Z" fill="#fff" />
+				</svg>
+				BMW ID
+			</a>
+
+			<div class="nav-link active" onclick="show('mycar')">Мой автомобиль</div>
+			<div class="nav-link" onclick="show('history')">История заявок</div>
+			<div class="nav-link" onclick="show('settings')">Настройки</div>
+
+			<div class="user-info-mini">
+				<div id="miniName" style="font-weight: 600">User</div>
+				<div class="logout-btn" onclick="logout()">Выйти</div>
+			</div>
+		</aside>
+
+		<main class="main">
+			<!-- MY CAR -->
+			<div id="mycar" class="section active">
+				<h1>Мой Гараж</h1>
+
+				<div class="card my-car-card">
+					<div class="car-icon">🚗</div>
+					<div style="flex: 1">
+						<h2 id="carTitle" style="color: white; margin: 0">
+							Нет автомобиля
+						</h2>
+						<p id="carSubtitle" style="color: var(--text-muted)">
+							Добавьте данные своего BMW
+						</p>
+					</div>
+					<button class="btn" onclick="bookServiceWithCar()">
+						Записаться на ТО
+					</button>
+				</div>
+
+				<div class="card">
+					<h2>Данные автомобиля</h2>
+					<form id="carForm">
+						<div class="form-group">
+							<label class="label">Модель (Например: BMW X5)</label>
+							<input
+								type="text"
+								class="input"
+								id="carModel"
+								placeholder="BMW Model"
+							/>
+						</div>
+						<div
+							style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem"
+						>
+							<div class="form-group">
+								<label class="label">VIN номер</label>
+								<input
+									type="text"
+									class="input"
+									id="carVin"
+									placeholder="WBA..."
+								/>
+							</div>
+							<div class="form-group">
+								<label class="label">Год выпуска</label>
+								<input
+									type="number"
+									class="input"
+									id="carYear"
+									placeholder="2023"
+								/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="label">Пробег (км)</label>
+							<input
+								type="number"
+								class="input"
+								id="carMileage"
+								placeholder="0"
+							/>
+						</div>
+						<button type="submit" class="btn">Сохранить</button>
+					</form>
+				</div>
+			</div>
+
+			<!-- HISTORY -->
+			<div id="history" class="section">
+				<h1>История заявок</h1>
+				<div class="card" id="historyList">
+					<div style="text-align: center; padding: 2rem; color: #666">
+						Загрузка...
+					</div>
+				</div>
+			</div>
+
+			<!-- SETTINGS -->
+			<div id="settings" class="section">
+				<h1>Личные данные</h1>
+				<div class="card">
+					<form>
+						<div class="form-group">
+							<label class="label">Имя</label>
+							<input
+								type="text"
+								class="input"
+								id="userName"
+								readonly
+								style="opacity: 0.7"
+							/>
+						</div>
+						<div class="form-group">
+							<label class="label">Email</label>
+							<input
+								type="email"
+								class="input"
+								id="userEmail"
+								readonly
+								style="opacity: 0.7"
+							/>
+						</div>
+						<div class="form-group">
+							<label class="label">Тип аккаунта</label>
+							<input
+								type="text"
+								class="input"
+								id="userType"
+								readonly
+								style="opacity: 0.7"
+							/>
+						</div>
+					</form>
+				</div>
+			</div>
+		</main>
+
+		<div class="toast-container" id="toastContainer"></div>
+		<script src="../src/js/main.js"></script>
+		<script>
+			// --- LOGIC ---
+			const API = 'http://localhost:3000/api'
+			let currentUser = null
+
+			document.addEventListener('DOMContentLoaded', () => {
+				// Check Auth
+				const userStr = localStorage.getItem('bmw_user')
+				if (!userStr) {
+					window.location.href = 'login.html'
+					return
+				}
+				currentUser = JSON.parse(userStr)
+
+				initProfile()
+			})
+
+			function show(id) {
+				document
+					.querySelectorAll('.section')
+					.forEach(el => el.classList.remove('active'))
+				document
+					.querySelectorAll('.nav-link')
+					.forEach(el => el.classList.remove('active'))
+
+				document.getElementById(id).classList.add('active')
+				// update nav active state (simple loop check or verify by text)
+				// skipping exact nav highlight logic for brevity
+			}
+
+			function initProfile() {
+				// Fill User Info
+				document.getElementById('miniName').textContent = currentUser.name
+				document.getElementById('userName').value = currentUser.name
+				document.getElementById('userEmail').value = currentUser.email
+				document.getElementById('userType').value =
+					currentUser.userType === 'legal'
+						? 'Юридическое лицо'
+						: 'Частный клиент'
+
+				// Fill Car Info Logic
+				if (currentUser.carData) {
+					let car = {}
+					try {
+						car = JSON.parse(currentUser.carData)
+					} catch (e) {
+						car = {}
+					}
+
+					document.getElementById('carModel').value = car.model || ''
+					document.getElementById('carVin').value = car.vin || ''
+					document.getElementById('carYear').value = car.year || ''
+					document.getElementById('carMileage').value = car.mileage || ''
+
+					if (car.model) {
+						document.getElementById('carTitle').textContent = car.model
+						document.getElementById('carSubtitle').textContent =
+							`${car.year || ''} • ${car.mileage || 0} км`
+					}
+				}
+
+				// Load History
+				loadHistory()
+			}
+
+			// Save Car
+			document.getElementById('carForm').addEventListener('submit', async e => {
+				e.preventDefault()
+				const carData = {
+					model: document.getElementById('carModel').value,
+					vin: document.getElementById('carVin').value,
+					year: document.getElementById('carYear').value,
+					mileage: document.getElementById('carMileage').value,
+				}
+
+				try {
+					const res = await fetch('/api/user/update', {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ id: currentUser.id, carData }),
+					})
+					const result = await res.json()
+					if (result.success) {
+						BMWDealer.showToast(
+							'success',
+							'Успешно',
+							'Данные автомобиля сохранены',
+						)
+
+						// Update local storage
+						currentUser.carData = JSON.stringify(carData)
+						localStorage.setItem('bmw_user', JSON.stringify(currentUser))
+						initProfile()
+					} else {
+						BMWDealer.showToast('error', 'Ошибка', 'Не удалось сохранить')
+					}
+				} catch (e) {
+					BMWDealer.showToast('error', 'Ошибка', 'Проблема с сетью')
+				}
+			})
+
+			async function loadHistory() {
+				try {
+					const res = await fetch(
+						`/api/user/requests?email=${currentUser.email}`,
+					)
+					const json = await res.json()
+
+					const list = document.getElementById('historyList')
+					if (!json.success || json.data.length === 0) {
+						list.innerHTML =
+							'<div style="text-align: center; padding: 2rem; color: #666;">История заявок пуста</div>'
+						return
+					}
+
+					list.innerHTML = json.data
+						.map(
+							item => `
+                    <div class="history-item">
+                        <div>
+                            <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 5px;">
+                                ${getTypeName(item.type)} 
+                                ${item.carModel ? `— ${item.carModel}` : ''}
+                            </div>
+                            <div style="color: #666; font-size: 0.9rem;">${new Date(item.createdAt).toLocaleDateString()}</div>
+                        </div>
+                        <div class="status-badge status-${item.status}">${item.status}</div>
+                    </div>
+                `,
+						)
+						.join('')
+				} catch (e) {
+					console.error(e)
+				}
+			}
+
+			function getTypeName(type) {
+				const map = {
+					service: 'Запись на сервис',
+					testdrive: 'Тест-драйв',
+					leasing: 'Лизинг',
+					credit: 'Кредит',
+					insurance: 'Страхование',
+					feedback: 'Отзыв',
+				}
+				return map[type] || type
+			}
+
+			function bookServiceWithCar() {
+				// Redirect to service page with auto-fill params
+				const model = document.getElementById('carModel').value
+				const vin = document.getElementById('carVin').value
+
+				if (!model) {
+					BMWDealer.showToast(
+						'warning',
+						'Внимание',
+						'Сначала укажите модель автомобиля',
+					)
+					return
+				}
+
+				window.location.href = `service.html?model=${encodeURIComponent(model)}&vin=${encodeURIComponent(vin)}`
+			}
+
+			function logout() {
+				localStorage.removeItem('bmw_user')
+				window.location.href = '../index.html'
+			}
+		</script>
+		<!-- Three.js (3D Graphics) -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+		<!-- GSAP & Lenis -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+		<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+		<!-- Custom Animations -->
+		<script src="../src/js/animations.js"></script>
+		<script src="../src/js/page-header-3d.js"></script>
+		<script src="../src/js/3d-logo.js"></script>
+	</body>
+</html>

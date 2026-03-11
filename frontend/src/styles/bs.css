@@ -1,0 +1,22 @@
+/**
+ * Импорт всех базовых стилей (core)
+ * BMW Dealer Website
+ */
+
+/* Шрифты и типографика */
+@import url('./core/fonts.css');
+
+/* Кнопки и цветовая схема */
+@import url('./core/buttons.css');
+
+/* Контейнеры и секции */
+@import url('./core/container.css');
+
+/* Формы */
+@import url('./core/forms.css');
+
+/* Flexbox и Grid сетка */
+@import url('./core/row.css');
+
+/* Вспомогательные классы */
+@import url('./core/size-helper.css');

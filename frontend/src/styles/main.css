@@ -1,0 +1,1151 @@
+/**
+ * Главный файл стилей BMW Dealer Website
+ * Импортирует все базовые стили и компоненты
+ */
+
+/* Базовые стили */
+@import url('./bs.css');
+
+/* Компоненты */
+@import url('./components/header.css');
+@import url('./components/footer.css');
+@import url('./components/nav.css');
+@import url('./components/burger.css');
+@import url('./components/cards.css');
+@import url('./components/modals.css');
+@import url('./components/icons.css');
+/* ==================== ГЛОБАЛЬНЫЕ СТИЛИ ==================== */
+
+/* Устранение мигания старого SVG-логотипа до загрузки Three.js */
+.header-logo svg,
+.footer-logo svg,
+.mobile-menu-logo svg,
+.header-logo-text {
+	display: none !important;
+}
+
+/* Скрытие дефолтного скроллбара */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+	display: none;
+	width: 0;
+	height: 0;
+}
+
+html,
+body {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+	overscroll-behavior-y: none; /* Предотвращает отскок ("rubber-band" эффект) при скролле ниже футера */
+}
+
+/* Фон страницы - Premium Noise & Mesh Gradient */
+body {
+	background-color: #020202;
+	color: var(--bmw-gray-dark);
+	min-height: 100vh;
+	position: relative;
+	overflow-x: hidden; /* Предотвращает горизонтальный скролл */
+}
+
+/* Remove redundant specific page IDs as they now inherit from body */
+/* #page-testdrive, #page-leasing... removed */
+#page-catalog {
+	/* Premium Dark Ambient Mesh */
+	background-color: #030303;
+	background-attachment: fixed;
+}
+
+/* Login Page Specifics */
+#page-login {
+	/* Premium Login Deep Glass */
+	background-color: #000000;
+	background-attachment: fixed;
+}
+
+#page-login .form-section {
+	margin: 140px auto 40px;
+}
+
+.auth-tabs {
+	display: flex;
+	background: rgba(0, 0, 0, 0.3);
+	border-radius: var(--radius-md);
+	padding: 0.5rem;
+	margin-bottom: 2rem;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.auth-tab {
+	flex: 1;
+	text-align: center;
+	padding: 0.75rem;
+	cursor: pointer;
+	font-weight: bold;
+	color: #888;
+	transition: all 0.3s;
+	border-radius: var(--radius-sm);
+	border-bottom: none !important; /* Override old style */
+	margin-bottom: 0 !important;
+}
+
+.auth-tab.active {
+	background: rgba(255, 255, 255, 0.1);
+	color: #fff;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.auth-tab:hover {
+	color: #fff;
+}
+
+.reg-type-selector {
+	background: rgba(0, 0, 0, 0.3) !important;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.reg-type-btn {
+	color: #aaa !important;
+}
+
+/* Auth Content Toggling */
+.auth-content {
+	display: none;
+	animation: fadeIn 0.4s ease;
+}
+.auth-content.active {
+	display: block;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Enhanced Auth Buttons */
+.auth-tab {
+	border: 1px solid transparent;
+}
+.auth-tab:hover {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+/* Requirements Section (Test Drive) */
+.requirements-section {
+	margin-top: 2rem;
+	background: rgba(255, 255, 255, 0.05) !important;
+	padding: 1.5rem;
+	border-radius: var(--radius-md);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.requirements-section h3,
+.requirements-section ul,
+.requirements-section li,
+.requirements-section label {
+	color: #fff !important;
+}
+.requirements-section ul {
+	list-style: disc;
+	padding-left: 1.5rem;
+	margin-bottom: 1rem;
+}
+
+/* ==================== HERO СЕКЦИЯ ==================== */
+
+.hero {
+	position: relative;
+	min-height: 92vh; /* Увеличил высоту секции с параллаксом до 100vh */
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+}
+
+.hero-bg {
+	position: absolute;
+	top: -20%;
+	left: 0;
+	width: 100%;
+	height: 140%;
+	background-image: url('../assets/images/wrap-image.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: 0;
+}
+
+.hero-overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		180deg,
+		rgba(0, 0, 0, 0.3) 0%,
+		rgba(2, 2, 2, 0.5) 100%
+	);
+	z-index: 1;
+}
+
+.hero-content {
+	position: relative;
+	z-index: 2;
+}
+
+.hero-title {
+	font-size: clamp(2.5rem, 5vw, 4.5rem);
+	font-weight: var(--font-weight-extrabold);
+	color: var(--bmw-white);
+	line-height: 1.1;
+	margin-bottom: 1.5rem;
+	text-transform: uppercase;
+	letter-spacing: var(--letter-spacing-wide);
+}
+
+.hero-subtitle {
+	font-size: clamp(1rem, 2vw, 1.5rem);
+	color: rgba(255, 255, 255, 0.8);
+	margin-bottom: 2.5rem;
+	max-width: 600px;
+}
+
+.hero-buttons {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+/* ==================== СЕКЦИЯ БАННЕРА ==================== */
+
+.banner-section {
+	position: relative;
+	min-height: 600px;
+	display: flex;
+	align-items: center;
+	background-image: url('../assets/images/wrap-image2.jpg');
+	background-size: cover;
+	background-position: center;
+	cursor: pointer;
+	overflow: hidden;
+	transition: all var(--transition-normal);
+}
+
+.banner-section::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0.8) 0%,
+		rgba(0, 0, 0, 0.3) 100%
+	);
+	transition: all var(--transition-normal);
+}
+
+.banner-section:hover::before {
+	background: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0.9) 0%,
+		rgba(0, 0, 0, 0.4) 100%
+	);
+}
+
+.banner-content {
+	position: relative;
+	z-index: 2;
+	text-align: center;
+	width: 100%;
+}
+
+.banner-title {
+	font-size: clamp(2rem, 4vw, 3.5rem);
+	font-weight: var(--font-weight-bold);
+	color: var(--bmw-white);
+	margin-bottom: 1rem;
+}
+
+.banner-subtitle {
+	font-size: var(--font-size-lg);
+	color: rgba(255, 255, 255, 0.8);
+	margin-bottom: 1.5rem;
+}
+
+/* ==================== ЗАГОЛОВКИ СТРАНИЦ ==================== */
+
+.page-header {
+	background: transparent;
+	padding: 4rem 0;
+	margin-top: 80px;
+}
+
+.page-title {
+	font-size: clamp(2rem, 4vw, 3rem);
+	font-weight: var(--font-weight-bold);
+	color: var(--bmw-white);
+	margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+	font-size: var(--font-size-lg);
+	color: rgba(255, 255, 255, 0.7);
+}
+
+/* ==================== СЕКЦИЯ КОНТЕНТА ==================== */
+
+.content-section {
+	padding: 4rem 0;
+	min-height: 80vh; /* Ensure full height feel */
+}
+
+.section-header {
+	text-align: center;
+	margin-bottom: 3rem;
+}
+
+.section-title {
+	font-size: clamp(1.75rem, 3vw, 2.5rem);
+	font-weight: var(--font-weight-bold);
+	color: var(--bmw-black);
+	margin-bottom: 0.75rem;
+}
+
+.section-subtitle {
+	font-size: var(--font-size-lg);
+	color: var(--bmw-gray);
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+/* ==================== ФОРМЫ СТРАНИЦ ==================== */
+
+.form-section {
+	background: rgba(10, 15, 25, 0.4);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: var(--radius-xl);
+	box-shadow:
+		0 10px 40px rgba(0, 0, 0, 0.5),
+		inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+	padding: 3rem;
+	width: 100%;
+	max-width: 650px; /* Единый размер для всех форм */
+	margin: 0 auto;
+	transition:
+		transform var(--transition-normal),
+		box-shadow var(--transition-normal);
+}
+
+.form-section:hover {
+	box-shadow:
+		0 15px 50px rgba(0, 0, 0, 0.6),
+		inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.form-section-title {
+	font-size: var(--font-size-2xl);
+	font-weight: var(--font-weight-semibold);
+	color: #ffffff;
+	margin-bottom: 2rem;
+	text-align: center;
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+/* ==================== FAQ АККОРДЕОН ==================== */
+
+.faq-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.faq-item {
+	background: rgba(255, 255, 255, 0.03);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: var(--radius-lg);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	transition: all var(--transition-normal);
+}
+
+.faq-item:hover {
+	background: rgba(255, 255, 255, 0.05);
+	border-color: rgba(255, 255, 255, 0.15);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.faq-question {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 1.25rem 1.5rem;
+	background: transparent;
+	border: none;
+	font-size: var(--font-size-lg);
+	font-weight: var(--font-weight-medium);
+	color: #ffffff;
+	text-align: left;
+	cursor: pointer;
+	transition: all var(--transition-normal);
+}
+
+.faq-question:hover {
+	background: rgba(255, 255, 255, 0.02);
+}
+
+.faq-question svg {
+	width: 1.5rem;
+	height: 1.5rem;
+	color: var(--bmw-blue-primary);
+	transition: transform var(--transition-normal);
+	flex-shrink: 0;
+}
+
+.faq-item.active .faq-question svg {
+	transform: rotate(180deg);
+}
+
+.faq-answer {
+	display: none;
+	padding: 0 1.5rem 1.5rem;
+	color: #cccccc;
+	line-height: 1.7;
+}
+
+.faq-item.active .faq-answer {
+	display: block;
+}
+
+/* ==================== ТАЙМЛАЙН ИСТОРИЯ ==================== */
+
+.timeline {
+	position: relative;
+	padding-left: 2rem;
+}
+
+.timeline::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 2px;
+	background: var(--bmw-gradient-primary);
+}
+
+.timeline-item {
+	position: relative;
+	padding-bottom: 2rem;
+	padding-left: 2rem;
+}
+
+.timeline-item::before {
+	content: '';
+	position: absolute;
+	left: -2rem;
+	top: 0;
+	width: 14px;
+	height: 14px;
+	background: var(--bmw-blue-primary);
+	border: 3px solid var(--bmw-white);
+	border-radius: 50%;
+	transform: translateX(-6px);
+}
+
+.timeline-year {
+	font-size: var(--font-size-xl);
+	font-weight: var(--font-weight-bold);
+	color: var(--bmw-blue-primary);
+	margin-bottom: 0.5rem;
+}
+
+.timeline-content {
+	background: rgba(255, 255, 255, 0.03);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	padding: 1.5rem;
+	border-radius: var(--radius-lg);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	transition: all var(--transition-normal);
+}
+
+.timeline-content:hover {
+	background: rgba(255, 255, 255, 0.05);
+	border-color: rgba(255, 255, 255, 0.15);
+	transform: translateY(-2px);
+}
+
+.timeline-title {
+	font-size: var(--font-size-lg);
+	font-weight: var(--font-weight-semibold);
+	margin-bottom: 0.5rem;
+	color: var(--bmw-black);
+}
+
+.timeline-text {
+	color: var(--bmw-gray-dark);
+	line-height: 1.6;
+}
+
+/* ==================== СТРАНИЦА ДЕТАЛИ АВТО ==================== */
+
+.car-detail-hero {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 3rem;
+	padding: 3rem 0;
+}
+
+.car-detail-gallery {
+	position: relative;
+}
+
+.car-detail-image {
+	width: 100%;
+	border-radius: var(--radius-xl);
+	overflow: hidden;
+}
+
+.car-detail-image img {
+	width: 100%;
+	height: auto;
+}
+
+.car-detail-info {
+	display: flex;
+	flex-direction: column;
+}
+
+.car-detail-title {
+	font-size: var(--font-size-4xl);
+	font-weight: var(--font-weight-bold);
+	color: var(--bmw-black);
+	margin-bottom: 0.5rem;
+}
+
+.car-detail-subtitle {
+	font-size: var(--font-size-lg);
+	color: var(--bmw-gray);
+	margin-bottom: 1.5rem;
+}
+
+.car-detail-price {
+	font-size: var(--font-size-3xl);
+	font-weight: var(--font-weight-bold);
+	color: var(--bmw-blue-primary);
+	margin-bottom: 2rem;
+}
+
+.car-specs-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1rem;
+	margin-bottom: 2rem;
+}
+
+.car-spec-item {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 1rem;
+	background: rgba(255, 255, 255, 0.03);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border-radius: var(--radius-md);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	transition: all var(--transition-normal);
+}
+
+.car-spec-item:hover {
+	background: rgba(255, 255, 255, 0.05);
+	border-color: rgba(255, 255, 255, 0.15);
+}
+
+.car-spec-item svg {
+	width: 24px;
+	height: 24px;
+	color: var(--bmw-blue-primary);
+}
+
+.car-spec-label {
+	font-size: var(--font-size-sm);
+	color: var(--bmw-gray);
+}
+
+.car-spec-value {
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-semibold);
+	color: var(--bmw-black);
+}
+
+.car-detail-actions {
+	display: flex;
+	gap: 1rem;
+	margin-top: auto;
+}
+
+@media (max-width: 1024px) {
+	.car-detail-hero {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ==================== КАРТА ДИЛЕРОВ ==================== */
+
+.dealers-map {
+	height: 600px;
+	border-radius: var(--radius-xl);
+	overflow: hidden;
+	box-shadow: var(--shadow-lg);
+}
+
+.dealers-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 1.5rem;
+	margin-top: 2rem;
+}
+
+.dealer-card {
+	background: rgba(255, 255, 255, 0.03);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border-radius: var(--radius-lg);
+	padding: 1.5rem;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	transition: all var(--transition-normal);
+}
+
+.dealer-card:hover {
+	transform: translateY(-5px);
+	background: rgba(255, 255, 255, 0.05);
+	border-color: rgba(255, 255, 255, 0.15);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.dealer-name {
+	font-size: var(--font-size-lg);
+	font-weight: var(--font-weight-semibold);
+	color: var(--bmw-black);
+	margin-bottom: 0.75rem;
+}
+
+.dealer-address {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+	color: var(--bmw-gray-dark);
+	font-size: var(--font-size-sm);
+	margin-bottom: 0.5rem;
+}
+
+.dealer-phone {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--bmw-blue-primary);
+	font-weight: var(--font-weight-medium);
+}
+
+/* ==================== УСЛОВИЯ И ИНФОРМАЦИЯ ==================== */
+
+.info-block {
+	background: rgba(255, 255, 255, 0.03);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border-radius: var(--radius-xl);
+	padding: 2.5rem;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+	margin-bottom: 2rem;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.info-block-title {
+	font-size: var(--font-size-2xl);
+	font-weight: var(--font-weight-semibold);
+	color: #ffffff;
+	margin-bottom: 1.5rem;
+	padding-bottom: 1rem;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.info-list-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 1rem;
+}
+
+.info-list-item svg {
+	width: 24px;
+	height: 24px;
+	color: var(--bmw-blue-primary);
+	flex-shrink: 0;
+	margin-top: 2px;
+}
+
+.info-list-item span {
+	color: var(--bmw-gray-dark);
+	line-height: 1.6;
+}
+
+/* ==================== ФИЛЬТРЫ КАТАЛОГА ==================== */
+
+/* ==================== ФИЛЬТРЫ КАТАЛОГА (PREMIUM) ==================== */
+
+.catalog-filters {
+	background: rgba(255, 255, 255, 0.03);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	padding: 2rem;
+	border-radius: var(--radius-xl);
+	margin-bottom: 3rem;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+	max-width: 900px; /* Reduced width */
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.catalog-filters select.form-control {
+	width: auto !important; /* Auto width for sort select */
+	min-width: 200px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.filter-group {
+	margin-bottom: 1.5rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	padding-bottom: 1.5rem;
+}
+
+.filter-group:last-child {
+	margin-bottom: 0;
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+.filter-title,
+.filter-label {
+	font-size: 0.85rem;
+	font-weight: 700;
+	color: #888 !important; /* Muted label */
+	margin-bottom: 1rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	display: block;
+}
+
+.filter-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+}
+
+.filter-chip {
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	color: #ccc !important;
+	padding: 0.6rem 1.2rem;
+	border-radius: 50px; /* Pillow shape */
+	font-size: 0.9rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	text-transform: none; /* Sentence case looks friendlier */
+	letter-spacing: 0.5px;
+}
+
+.filter-chip:hover {
+	background: rgba(255, 255, 255, 0.1);
+	border-color: rgba(255, 255, 255, 0.3);
+	color: #fff !important;
+	transform: translateY(-1px);
+}
+
+.filter-chip.active {
+	background: var(--bmw-gradient-primary);
+	border-color: var(--bmw-blue-primary);
+	color: #fff !important;
+	box-shadow: 0 4px 15px rgba(28, 105, 212, 0.3);
+	font-weight: 600;
+}
+
+/* ==================== АДАПТИВНОСТЬ ==================== */
+
+@media (max-width: 768px) {
+	.hero {
+		min-height: 60vh;
+	}
+
+	.hero-buttons {
+		flex-direction: column;
+	}
+
+	.hero-buttons .btn {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.form-section {
+		padding: 2rem 1.5rem;
+	}
+
+	.car-specs-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.car-detail-actions {
+		flex-direction: column;
+	}
+
+	.dealers-map {
+		height: 400px;
+	}
+}
+
+@media (max-width: 768px) {
+	.hero {
+		background-image: url('../assets/images/hero-bg-uploaded.jpg');
+	}
+	.banner-section {
+		background-image: url('../assets/images/used-cars-bg-v2.png');
+	}
+}
+
+/* ==================== RICH SELECT (CUSTOM DROPDOWN) ==================== */
+.rich-select {
+	position: relative;
+	width: 100%;
+}
+.rich-select-trigger {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.75rem 1rem;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 12px;
+	cursor: pointer;
+	font-size: 1rem;
+	color: #fff;
+	transition: all 0.2s;
+}
+.rich-select-trigger:hover {
+	border-color: rgba(255, 255, 255, 0.4);
+	background: rgba(255, 255, 255, 0.1);
+}
+.rich-select-trigger img {
+	width: 40px;
+	height: auto;
+	object-fit: contain;
+	margin-right: 10px;
+	filter: brightness(0.9);
+}
+.rich-select-dropdown {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	background: #1a1a1a;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 12px;
+	margin-top: 5px;
+	max-height: 300px;
+	overflow-y: auto;
+	z-index: 100;
+	display: none;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.rich-select.open .rich-select-dropdown {
+	display: block;
+}
+.rich-select-item {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	cursor: pointer;
+	transition: background 0.2s;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	color: #ddd;
+}
+.rich-select-item:last-child {
+	border-bottom: none;
+}
+.rich-select-item:hover {
+	background: rgba(255, 255, 255, 0.1);
+	color: #fff;
+}
+.rich-select-item img {
+	width: 60px;
+	height: 40px;
+	object-fit: cover;
+	margin-right: 15px;
+	border-radius: 4px;
+}
+.rich-select-item span {
+	font-weight: 500;
+}
+.rich-select-item .series-badge {
+	font-size: 0.75rem;
+	background: #fff;
+	color: #000;
+	padding: 2px 6px;
+	border-radius: 4px;
+	margin-left: auto;
+}
+
+/* ==================== GLASSMORPHISM & DARK UI ==================== */
+
+/* FORCE TEXT WHITE GLOBALLY */
+body {
+	color: #ffffff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+p,
+span,
+div,
+li,
+a,
+label,
+.section-title,
+.form-section-title,
+.info-card-title,
+.card-title,
+.timeline-title,
+.dealer-name,
+.review-author,
+.form-label,
+.form-hint,
+.car-card-title,
+.car-card-price,
+.car-spec-value,
+.filter-chip {
+	color: #ffffff !important;
+}
+
+/* Muted text should be light gray, not dark gray */
+.text-muted,
+.car-card-subtitle,
+.car-spec,
+.car-spec-label,
+.dealer-address,
+.review-car,
+.review-date,
+.car-card-price span {
+	color: #cccccc !important;
+}
+
+/* Glassmorphism Containers - Use explicit dark background */
+/* Solid Dark Containers - No Glass */
+.card,
+.form-section,
+.info-block,
+.faq-item,
+.timeline-content,
+.dealer-card,
+.review-card {
+	background: #1a1a1a !important;
+	border: 1px solid #333 !important;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+}
+
+/* Auth Cards specifically dark */
+.login-card {
+	background: #111 !important;
+	border: 1px solid #333;
+	backdrop-filter: none !important;
+}
+
+/* Inputs / Form Controls */
+/* Inputs / Form Controls - Solid */
+.form-control,
+.rich-select-trigger,
+.rich-select-dropdown {
+	background-color: #222 !important;
+	border-color: #444 !important;
+	color: #ffffff !important;
+}
+
+.form-control::placeholder {
+	color: #aaaaaa !important;
+}
+
+.form-control:focus,
+.rich-select-trigger:hover {
+	border-color: var(--bmw-blue-primary) !important;
+	background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Rich Select Specifics */
+.rich-select-dropdown {
+	background-color: #1a1a1a !important;
+	border: 1px solid #444 !important;
+}
+
+.rich-select-item {
+	border-bottom: 1px solid #333 !important;
+	color: #fff !important;
+}
+
+.rich-select-item:hover {
+	background-color: #333 !important;
+}
+
+.series-badge {
+	color: #fff !important;
+	background: #333 !important; /* Dark badge */
+	font-weight: bold;
+}
+
+/* Header/Footer adjustments */
+.header {
+	background: rgba(0, 0, 0, 0.9) !important;
+	border-bottom: 1px solid #333;
+}
+.footer {
+	background: #000000 !important;
+	border-top: 1px solid #333;
+}
+.footer-link,
+.footer-phone,
+.footer-copyright {
+	color: #aaa !important;
+}
+.footer-link:hover {
+	color: #fff !important;
+}
+
+/* Buttons (Restore visibility) */
+.btn-primary {
+	color: #ffffff !important; /* Ensure white text */
+}
+.btn-outline-dark {
+	color: #ffffff !important;
+	border-color: #ffffff !important;
+}
+.btn-outline-dark:hover {
+	background: #ffffff !important;
+	color: #000000 !important;
+}
+
+/* Registration Type Selector (Pill Buttons) */
+.reg-type-selector {
+	background: transparent !important;
+	border: none !important;
+	gap: 1rem;
+	display: flex;
+	padding: 0;
+	margin-bottom: 2rem;
+}
+
+.reg-type-btn {
+	flex: 1;
+	text-align: center;
+	padding: 1rem;
+	border-radius: 12px !important;
+	cursor: pointer;
+	font-size: 1rem;
+	color: #ccc !important;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	transition: all 0.3s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+}
+
+.reg-type-btn:hover {
+	background: rgba(255, 255, 255, 0.1);
+	border-color: rgba(255, 255, 255, 0.3);
+	color: #fff !important;
+}
+
+.reg-type-btn.active {
+	background: var(--bmw-gradient-primary) !important;
+	color: #fff !important;
+	font-weight: bold;
+	border-color: var(--bmw-blue-primary);
+	box-shadow: 0 4px 15px rgba(28, 105, 212, 0.4);
+}
+
+/* Mobile Hero Adjustments (User Request: Text Top-Left, Buttons Bottom, Image Visible) */
+@media (max-width: 768px) {
+	.hero {
+		/* Ensure we take full viewport height to spacing works */
+		min-height: 85vh;
+		align-items: stretch; /* Override center */
+	}
+
+	.hero-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between; /* Pushes text up and buttons down */
+		height: 100%;
+		padding: 2rem 1rem;
+		text-align: left; /* Override center text */
+	}
+
+	/* Text Grouping */
+	.hero-title {
+		font-size: 1.8rem; /* Smaller than desktop */
+		margin-top: 0;
+		margin-bottom: 0.5rem;
+		max-width: 85%;
+		letter-spacing: 1px;
+	}
+
+	.hero-subtitle {
+		font-size: 1rem;
+		max-width: 85%;
+		margin-bottom: auto; /* Push everything else down if needed, but space-between handles it */
+	}
+
+	/* Buttons at the bottom */
+	.hero-buttons {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		width: 100%;
+		margin-top: auto; /* Ensure it stays at bottom even if text is short */
+		margin-bottom: 2rem;
+	}
+
+	.hero-buttons .btn {
+		width: 100%;
+		font-size: 0.9rem;
+		padding: 0.8rem;
+		margin: 0;
+	}
+}

@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Вход в личный кабинет BMW ConnectedDrive. Управление вашим автомобилем и запись на сервис."
+		/>
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Вход в личный кабинет | BMW Дилер</title>
+		<link rel="stylesheet" href="../src/styles/main.css" />
+	</head>
+	<body id="page-login">
+		<!-- Шапка -->
+		<header class="header" id="header">
+			<div class="header-inner">
+				<div class="header-logo">
+					<a href="../index.html">
+						<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+							<!-- Внешнее кольцо -->
+							<circle
+								cx="50"
+								cy="50"
+								r="48"
+								fill="none"
+								stroke="#fff"
+								stroke-width="2"
+							/>
+							<!-- Синие и белые секторы -->
+							<path d="M50 8 A42 42 0 0 1 92 50 L50 50 Z" fill="#1c69d4" />
+							<path d="M50 92 A42 42 0 0 1 8 50 L50 50 Z" fill="#1c69d4" />
+							<path d="M92 50 A42 42 0 0 1 50 92 L50 50 Z" fill="#fff" />
+							<path d="M8 50 A42 42 0 0 1 50 8 L50 50 Z" fill="#fff" />
+						</svg>
+						<span class="header-logo-text">BMW</span>
+					</a>
+				</div>
+				<div class="header-actions">
+					<a href="../index.html" class="header-action-btn" title="На главную">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<line x1="18" y1="6" x2="6" y2="18"></line>
+							<line x1="6" y1="6" x2="18" y2="18"></line>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</header>
+
+		<main class="main-content">
+			<div class="form-section">
+				<div style="text-align: center; margin-bottom: 2.5rem">
+					<h1
+						class="form-section-title"
+						style="margin-bottom: 0.5rem; font-size: 2.5rem"
+					>
+						<span style="border-bottom: 4px solid #1c69d4; padding-bottom: 5px"
+							>BMW</span
+						>
+						ID
+					</h1>
+					<p style="color: #aaa; font-size: 1.1rem">
+						Единый вход для всех сервисов BMW Connected
+					</p>
+				</div>
+
+				<!-- Табы -->
+				<div class="auth-tabs">
+					<div class="auth-tab active" onclick="switchAuthTab('login')">
+						Вход
+					</div>
+					<div class="auth-tab" onclick="switchAuthTab('register')">
+						Регистрация
+					</div>
+				</div>
+
+				<!-- Вход -->
+				<div id="login-content" class="auth-content active">
+					<form class="form" id="loginForm">
+						<div class="form-group">
+							<label class="form-label">Email</label>
+							<input
+								type="text"
+								class="form-control"
+								name="login"
+								required
+								placeholder="example@mail.ru"
+							/>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Пароль</label>
+							<input
+								type="password"
+								class="form-control"
+								name="password"
+								required
+								placeholder="••••••••"
+							/>
+						</div>
+
+						<div
+							style="
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+								margin-bottom: 1.5rem;
+								font-size: var(--font-size-sm);
+							"
+						>
+							<label
+								style="
+									display: flex;
+									align-items: center;
+									gap: 0.5rem;
+									cursor: pointer;
+								"
+							>
+								<input type="checkbox" name="remember" /> Запомнить меня
+							</label>
+							<a href="#" style="color: var(--bmw-blue-primary)"
+								>Забыли пароль?</a
+							>
+						</div>
+
+						<button type="submit" class="btn btn-primary btn-block">
+							Войти
+						</button>
+					</form>
+
+					<script>
+						document
+							.getElementById('loginForm')
+							.addEventListener('submit', async e => {
+								e.preventDefault()
+								const formData = new FormData(e.target)
+								const data = Object.fromEntries(formData.entries())
+
+								try {
+									const res = await fetch('/api/login', {
+										method: 'POST',
+										headers: { 'Content-Type': 'application/json' },
+										body: JSON.stringify(data),
+									})
+									const result = await res.json()
+
+									if (result.success) {
+										localStorage.setItem(
+											'bmw_user',
+											JSON.stringify(result.user),
+										)
+										window.location.href = 'profile.html'
+									} else {
+										BMWDealer.showToast('error', 'Ошибка входа', result.message)
+									}
+								} catch (err) {
+									BMWDealer.showToast(
+										'error',
+										'Ошибка',
+										'Не удалось выполнить вход',
+									)
+								}
+							})
+					</script>
+				</div>
+
+				<!-- Регистрация -->
+				<div id="register-content" class="auth-content">
+					<div class="reg-type-selector">
+						<div
+							class="reg-type-btn active"
+							onclick="switchRegType('individual')"
+						>
+							Физическое лицо
+						</div>
+						<div class="reg-type-btn" onclick="switchRegType('legal')">
+							Юридическое лицо
+						</div>
+					</div>
+
+					<!-- Форма физ. лица -->
+					<form
+						id="reg-individual"
+						class="form"
+						action="/api/register"
+						method="POST"
+						data-ajax
+					>
+						<input type="hidden" name="userType" value="individual" />
+						<div class="form-row">
+							<div class="form-group">
+								<label class="form-label">Имя</label>
+								<input
+									type="text"
+									class="form-control"
+									name="firstName"
+									required
+									placeholder="Имя"
+								/>
+							</div>
+							<div class="form-group">
+								<label class="form-label">Фамилия</label>
+								<input
+									type="text"
+									class="form-control"
+									name="lastName"
+									required
+									placeholder="Фамилия"
+								/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Телефон</label>
+							<input
+								type="tel"
+								class="form-control"
+								name="phone"
+								required
+								placeholder="+7 (999) 000-00-00"
+							/>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Email</label>
+							<input
+								type="email"
+								class="form-control"
+								name="email"
+								required
+								placeholder="example@mail.ru"
+							/>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Пароль</label>
+							<input
+								type="password"
+								class="form-control"
+								name="password"
+								required
+								placeholder="Придумайте пароль"
+							/>
+						</div>
+						<button type="submit" class="btn btn-primary btn-block">
+							Зарегистрироваться
+						</button>
+					</form>
+
+					<!-- Форма юр. лица -->
+					<form
+						id="reg-legal"
+						class="form"
+						action="/api/register"
+						method="POST"
+						data-ajax
+						style="display: none"
+					>
+						<input type="hidden" name="userType" value="legal" />
+						<div class="form-group">
+							<label class="form-label">Название компании</label>
+							<input
+								type="text"
+								class="form-control"
+								name="companyName"
+								required
+								placeholder='ООО "Компания"'
+							/>
+						</div>
+						<div class="form-group">
+							<label class="form-label">ИНН</label>
+							<input
+								type="text"
+								class="form-control"
+								name="inn"
+								required
+								placeholder="1234567890"
+							/>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Телефон контактного лица</label>
+							<input
+								type="tel"
+								class="form-control"
+								name="phone"
+								required
+								placeholder="+7 (999) 000-00-00"
+							/>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Email</label>
+							<input
+								type="email"
+								class="form-control"
+								name="email"
+								required
+								placeholder="corp@company.ru"
+							/>
+						</div>
+						<div class="form-group">
+							<label class="form-label">Пароль</label>
+							<input
+								type="password"
+								class="form-control"
+								name="password"
+								required
+								placeholder="Придумайте пароль"
+							/>
+						</div>
+						<button type="submit" class="btn btn-primary btn-block">
+							Зарегистрироваться
+						</button>
+					</form>
+
+					<div
+						style="
+							text-align: center;
+							margin-top: 1rem;
+							font-size: var(--font-size-sm);
+							color: var(--bmw-gray);
+						"
+					>
+						Нажимая кнопку, вы соглашаетесь с условиями обработки персональных
+						данных
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<div class="toast-container" id="toastContainer"></div>
+
+		<script src="../src/js/main.js"></script>
+		<script>
+			// Логика переключения табов
+			function switchAuthTab(tab) {
+				// Переключаем кнопки
+				document.querySelectorAll('.auth-tab').forEach((el, index) => {
+					if (
+						(tab === 'login' && index === 0) ||
+						(tab === 'register' && index === 1)
+					) {
+						el.classList.add('active')
+					} else {
+						el.classList.remove('active')
+					}
+				})
+
+				// Переключаем контент
+				const loginContent = document.getElementById('login-content')
+				const registerContent = document.getElementById('register-content')
+
+				if (tab === 'login') {
+					loginContent.classList.add('active')
+					registerContent.classList.remove('active')
+				} else {
+					loginContent.classList.remove('active')
+					registerContent.classList.add('active')
+				}
+			}
+
+			// Логика переключения типа регистрации
+			function switchRegType(type) {
+				// Переключаем кнопки
+				document.querySelectorAll('.reg-type-btn').forEach((el, index) => {
+					if (
+						(type === 'individual' && index === 0) ||
+						(type === 'legal' && index === 1)
+					) {
+						el.classList.add('active')
+					} else {
+						el.classList.remove('active')
+					}
+				})
+
+				// Переключаем формы
+				const formIndividual = document.getElementById('reg-individual')
+				const formLegal = document.getElementById('reg-legal')
+
+				if (type === 'individual') {
+					formIndividual.style.display = 'block'
+					formLegal.style.display = 'none'
+				} else {
+					formIndividual.style.display = 'none'
+					formLegal.style.display = 'block'
+				}
+			}
+		</script>
+		<!-- Three.js (3D Graphics) -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+		<!-- GSAP & Lenis -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+		<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+		<!-- Custom Animations -->
+		<script src="../src/js/animations.js"></script>
+		<script src="../src/js/page-header-3d.js"></script>
+		<script src="../src/js/3d-logo.js"></script>
+	</body>
+</html>

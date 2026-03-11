@@ -1,0 +1,28 @@
+{
+	"name": "bmw-dealer-website",
+	"version": "1.0.0",
+	"description": "Сайт автомобильного дилера BMW",
+	"main": "backend/server.js",
+	"scripts": {
+		"start": "node backend/server.js",
+		"dev": "node backend/server.js"
+	},
+	"keywords": [
+		"bmw",
+		"dealer",
+		"website"
+	],
+	"author": "BMW Dealer",
+	"license": "ISC",
+	"dependencies": {
+		"body-parser": "^1.20.2",
+		"cors": "^2.8.5",
+		"express": "^4.18.2",
+		"sqlite3": "^5.1.7"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^8.56.1",
+		"@typescript-eslint/parser": "^8.56.1",
+		"eslint": "^8.57.1"
+	}
+}

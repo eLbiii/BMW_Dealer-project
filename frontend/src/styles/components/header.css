@@ -1,0 +1,266 @@
+/**
+ * Стили шапки (header) для сайта BMW Dealer
+ */
+
+/* Основной header */
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	background: rgba(10, 15, 28, 0.6);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	height: 80px;
+	display: flex;
+	align-items: center;
+	transition: all var(--transition-normal);
+}
+
+.header.scrolled {
+	height: 70px;
+	box-shadow: var(--shadow-lg);
+}
+
+.header-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: 0 var(--container-padding);
+}
+
+/* Логотип BMW */
+.header-logo {
+	flex-shrink: 0;
+}
+
+.header-logo a {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.header-logo svg {
+	width: 50px;
+	height: 50px;
+}
+
+.header-logo-text {
+	font-size: var(--font-size-xl);
+	font-weight: var(--font-weight-bold);
+	color: var(--bmw-white);
+	letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Навигация */
+.header-nav {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+}
+
+.header-nav-list {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+/* Элемент навигации */
+.nav-item {
+	position: relative;
+	perspective: 1000px; /* Для 3D выпадающего меню */
+}
+
+.nav-link {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1rem;
+	color: var(--bmw-white);
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-medium);
+	border-radius: var(--radius-md);
+	transition: color var(--transition-normal);
+	position: relative;
+}
+
+.nav-link::after {
+	content: '';
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	width: 0;
+	height: 2px;
+	background: var(--bmw-blue-primary);
+	box-shadow: 0 0 10px var(--bmw-blue-primary);
+	transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+	transform: translateX(-50%);
+	border-radius: 2px;
+	opacity: 0;
+}
+
+.nav-link:hover::after {
+	width: 60%;
+	opacity: 1;
+}
+
+.nav-link:hover {
+	color: var(--bmw-white);
+}
+
+.nav-link svg {
+	width: 1rem;
+	height: 1rem;
+	transition: transform var(--transition-normal);
+}
+
+/* Выпадающее меню */
+.nav-dropdown {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	min-width: 240px;
+	background: rgba(15, 18, 25, 0.85);
+	backdrop-filter: blur(24px);
+	-webkit-backdrop-filter: blur(24px);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: var(--radius-md);
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+	opacity: 0;
+	visibility: hidden;
+	transform-origin: top center;
+	transform: perspective(600px) rotateX(-15deg) translateY(10px);
+	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	padding: 0.75rem;
+	z-index: 100;
+}
+
+.nav-item:hover .nav-dropdown {
+	opacity: 1;
+	visibility: visible;
+	transform: perspective(600px) rotateX(0deg) translateY(0);
+}
+
+.nav-item:hover .nav-link svg {
+	transform: rotate(180deg);
+}
+
+.nav-dropdown-item {
+	display: block;
+	padding: 0.75rem 1rem;
+	color: #cccccc;
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	border-radius: var(--radius-sm);
+	transition: all var(--transition-normal);
+}
+
+.nav-dropdown-item:hover {
+	background: rgba(255, 255, 255, 0.1);
+	color: #ffffff;
+	padding-left: 1.25rem;
+}
+
+/* Правая часть header */
+.header-actions {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.header-action-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	color: var(--bmw-white);
+	background: rgba(255, 255, 255, 0.1);
+	border: none;
+	border-radius: var(--radius-full);
+	cursor: pointer;
+	transition: all var(--transition-normal);
+}
+
+.header-action-btn:hover {
+	background: var(--bmw-blue-primary);
+}
+
+.header-action-btn svg {
+	width: 22px;
+	height: 22px;
+}
+
+/* Бургер меню */
+.burger-btn {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+	width: 44px;
+	height: 44px;
+	padding: 10px;
+	background: rgba(255, 255, 255, 0.1);
+	border: none;
+	border-radius: var(--radius-md);
+	cursor: pointer;
+	transition: all var(--transition-normal);
+}
+
+.burger-btn:hover {
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.burger-btn span {
+	display: block;
+	width: 100%;
+	height: 2px;
+	background: var(--bmw-white);
+	border-radius: 2px;
+	transition: all var(--transition-normal);
+}
+
+.burger-btn.active span:nth-child(1) {
+	transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-btn.active span:nth-child(2) {
+	opacity: 0;
+}
+
+.burger-btn.active span:nth-child(3) {
+	transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Адаптивность */
+@media (max-width: 1600px) {
+	.header-nav {
+		display: none;
+	}
+
+	.burger-btn {
+		display: flex;
+	}
+
+	/* Скрываем кнопку дилеров в хедере, так как она есть в бургер-меню */
+	/* .header-action-btn[href*='dealers'] {
+		display: none;
+	} */
+}
+
+/* Пространство под header */
+.header-spacer {
+	height: 80px;
+}
+
+@media (max-width: 768px) {
+	/* Скрываем кнопку только в хедере */
+	.header-actions .header-action-btn[href*='dealers'] {
+		display: none;
+	}
+}

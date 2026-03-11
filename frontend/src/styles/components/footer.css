@@ -1,0 +1,176 @@
+/**
+ * Стили футера для сайта BMW Dealer
+ */
+
+.footer {
+	background: var(--bmw-gradient-dark);
+	color: var(--bmw-white);
+	padding: 4rem 0 0.5rem; /* Уменьшен нижний padding (с 2rem до 0.5rem) */
+}
+
+.footer-inner {
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: 0 var(--container-padding);
+}
+
+/* Верхняя часть футера */
+.footer-top {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 3rem;
+	padding-bottom: 3rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Колонка футера */
+.footer-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.footer-column-title {
+	font-size: var(--font-size-lg);
+	font-weight: var(--font-weight-semibold);
+	margin-bottom: 1.5rem;
+	color: var(--bmw-white);
+}
+
+.footer-links {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.footer-link {
+	color: rgba(255, 255, 255, 0.7);
+	font-size: var(--font-size-sm);
+	transition: all var(--transition-normal);
+}
+
+.footer-link:hover {
+	color: var(--bmw-white);
+	padding-left: 0.5rem;
+}
+
+/* Контакты в футере */
+.footer-contact {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.footer-contact-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75rem;
+	color: rgba(255, 255, 255, 0.7);
+	font-size: var(--font-size-sm);
+}
+
+.footer-contact-item svg {
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
+	margin-top: 2px;
+}
+
+.footer-phone {
+	font-size: var(--font-size-lg);
+	font-weight: var(--font-weight-semibold);
+	color: var(--bmw-white);
+}
+
+/* Социальные сети */
+.footer-social {
+	display: flex;
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+.footer-social-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: var(--radius-full);
+	color: var(--bmw-white);
+	transition: all var(--transition-normal);
+}
+
+.footer-social-link:hover {
+	background: var(--bmw-blue-primary);
+	transform: translateY(-3px);
+}
+
+.footer-social-link svg {
+	width: 20px;
+	height: 20px;
+}
+
+/* Нижняя часть футера */
+.footer-bottom {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 2rem;
+	gap: 2rem;
+}
+
+.footer-copyright {
+	color: rgba(255, 255, 255, 0.5);
+	font-size: var(--font-size-sm);
+	margin-bottom: 0; /* Удален отступ снизу */
+}
+
+.footer-legal {
+	display: flex;
+	gap: 2rem;
+}
+
+.footer-legal-link {
+	color: rgba(255, 255, 255, 0.5);
+	font-size: var(--font-size-sm);
+	transition: color var(--transition-normal);
+}
+
+.footer-legal-link:hover {
+	color: var(--bmw-white);
+}
+
+/* Логотип в футере */
+.footer-logo {
+	margin-bottom: 1.5rem;
+}
+
+.footer-logo svg {
+	width: 60px;
+	height: 60px;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+	.footer-top {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 768px) {
+	.footer-top {
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+
+	.footer-bottom {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.footer-legal {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+	}
+}
