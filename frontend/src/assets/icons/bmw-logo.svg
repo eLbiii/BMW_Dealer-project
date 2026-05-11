@@ -1,32 +1,80 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <!-- Внешняя чёрная окантовка -->
-  <circle cx="50" cy="50" r="50" fill="#000"/>
-  <!-- Белое кольцо -->
-  <circle cx="50" cy="50" r="47" fill="#fff"/>
-  <!-- Тёмное кольцо -->
-  <circle cx="50" cy="50" r="43" fill="#1a1a1a"/>
-  <!-- Внутренний круг (фон) -->
-  <circle cx="50" cy="50" r="36" fill="#fff"/>
-
-  <!-- Верхний-левый квадрант: синий -->
-  <path d="M50 14 A36 36 0 0 0 14 50 L50 50 Z" fill="#0066b1"/>
-  <!-- Нижний-правый квадрант: синий -->
-  <path d="M50 86 A36 36 0 0 0 86 50 L50 50 Z" fill="#0066b1"/>
-  <!-- Верхний-правый квадрант: белый -->
-  <path d="M50 14 A36 36 0 0 1 86 50 L50 50 Z" fill="#fff"/>
-  <!-- Нижний-левый квадрант: белый -->
-  <path d="M50 86 A36 36 0 0 1 14 50 L50 50 Z" fill="#fff"/>
-
-  <!-- Горизонтальная линия по центру -->
-  <line x1="14" y1="50" x2="86" y2="50" stroke="#1a1a1a" stroke-width="0.5"/>
-  <!-- Вертикальная линия по центру -->
-  <line x1="50" y1="14" x2="50" y2="86" stroke="#1a1a1a" stroke-width="0.5"/>
-
-  <!-- Текст BMW на кольце (верхний) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
   <defs>
-    <path id="topArc" d="M 15,50 A 35,35 0 1,1 85,50"/>
+    <linearGradient id="outerRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#7a7a7a"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="innerRing" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#555555"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <radialGradient id="blueGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4293f5"/>
+      <stop offset="100%" stop-color="#0e4185"/>
+    </radialGradient>
+    <radialGradient id="whiteGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e0e0e0"/>
+    </radialGradient>
   </defs>
-  <text font-family="Arial, sans-serif" font-weight="900" font-size="11" fill="#fff" letter-spacing="3">
-    <textPath href="#topArc" startOffset="22%">BMW</textPath>
-  </text>
+
+  <!-- Серебряная внешняя окантовка -->
+  <circle cx="100" cy="100" r="98" fill="none" stroke="url(#outerRing)" stroke-width="4"/>
+
+  <!--
+    Буквы B M W:
+    В 3d-logo.js каждая буква рисуется в системе координат с центром в (cx,cy),
+    поворот: [-45°, 0°, +45°], y = -radiusText (= -center*0.68).
+    Затем текстура поворачивается на +90° CCW.
+    Итоговые позиции (в SVG 200x200, r=68):
+      B: угол = -45°+90° = 45° от вертикали → 10 часов (верх-лево)
+      M: угол =   0°+90° = 90°              → 9 часов (лево), но реально M вверху
+    
+    Смотрим на скрин: B — верх-лево (~10ч), M — вверх (~12ч), W — верх-право (~2ч)
+    Позиции с r=68:
+      B at -45°: x=100+68*sin(-45°)=51.9, y=100-68*cos(-45°)=51.9  rotate=-45
+      M at   0°: x=100,                   y=100-68=32               rotate=0
+      W at +45°: x=100+68*sin(45°)=148.1, y=100-68*cos(45°)=51.9   rotate=45
+  -->
+
+  <!-- Буква B (10 часов, поворот -45°) -->
+  <text
+    transform="translate(51.9,55.9) rotate(-45)"
+    font-family="Inter, Arial Black, sans-serif"
+    font-weight="900"
+    font-size="30"
+    fill="#ffffff"
+    text-anchor="middle"
+    dominant-baseline="middle">B</text>
+
+  <!-- Буква M (12 часов, без поворота) -->
+  <text
+    transform="translate(100,36)"
+    font-family="Inter, Arial Black, sans-serif"
+    font-weight="900"
+    font-size="30"
+    fill="#ffffff"
+    text-anchor="middle"
+    dominant-baseline="middle">M</text>
+
+  <!-- Буква W (2 часа, поворот +45°) -->
+  <text
+    transform="translate(148.1,55.9) rotate(45)"
+    font-family="Inter, Arial Black, sans-serif"
+    font-weight="900"
+    font-size="30"
+    fill="#ffffff"
+    text-anchor="middle"
+    dominant-baseline="middle">W</text>
+
+  <!-- Внутренние сектора: верх-лево СИНИЙ, верх-право БЕЛЫЙ, низ-лево БЕЛЫЙ, низ-право СИНИЙ -->
+  <path d="M100,100 L100,48 A52,52 0 0,0 48,100 Z" fill="url(#blueGrad)"/>
+  <path d="M100,100 L100,48 A52,52 0 0,1 152,100 Z" fill="url(#whiteGrad)"/>
+  <path d="M100,100 L48,100 A52,52 0 0,0 100,152 Z" fill="url(#whiteGrad)"/>
+  <path d="M100,100 L152,100 A52,52 0 0,1 100,152 Z" fill="url(#blueGrad)"/>
+
+  <!-- Внутреннее серебряное кольцо -->
+  <circle cx="100" cy="100" r="52" fill="none" stroke="url(#innerRing)" stroke-width="3"/>
 </svg>
